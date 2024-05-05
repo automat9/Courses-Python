@@ -1,1 +1,4 @@
-# Repository-1.0
+# This is my first repository
+## Editing the file
+
+This is a markdown file
