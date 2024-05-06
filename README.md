@@ -1,4 +1,4 @@
-# This is my first repository
-## Editing the file
+# Welcome to my first Repository
 
-This is a markdown file
+I'm still very new to programming so please don't mind my awful codes
+If you've arrived from my linkedin profile and know more about programming, please don't hesitate to share your advice or feedback :)
