@@ -10,6 +10,7 @@ print(f"The sum of x and y is {z}")
 # String Operations
 name = "Matt Pawlaczyk"
 # In order to find index 7, type Name[7], the result will be "a"
+print(name[7])
 print(name[0:4])
 print(name[6:14])
 print(name[::2])
