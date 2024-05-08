@@ -6,7 +6,7 @@ x = 53*32
 y = -3*34.5
 z = x+y
 print(f"The sum of x and y is {z}")
-#------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------
 # String Operations
 name = "Matt Pawlaczyk"
 # In order to find index 7, type Name[7], the result will be "a"
@@ -36,3 +36,11 @@ file_destination = "C:\new_folder\file.txt"
 print(file_destination) # escape sequence
 raw_string = r"C:\new_folder\file.txt"
 print(raw_string)
+#------------------------------------------------------------------------------------------------------------
+# Tuples and lists
+Ratings = (10,9,4,7,1,8,2,3)
+RatingsSorted = sorted(Ratings)
+List = ["Matt", 9.12, 2002]
+# Unlike tuples, lists are mutable, meaning they can be changed - e.g. extended using L.extend(["Bournemouth",2024])
+L[0] # is a way of finding elements using indices
+L.append(["Bournemouth",2024]) # This will extend the list but will only add 1 new index ["Bournemouth",2024], instead of adding both elements separately
