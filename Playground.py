@@ -1,6 +1,6 @@
 Name = "Matt"
 age = 22
-print(f"My name is {name} and I'm {age} years old")
+print(f"My name is {Name} and I'm {age} years old")
 
 x = 53*32
 y = -3*34.5
@@ -29,8 +29,9 @@ B=A.upper()
 print(B)
 # Replace method
 B=A.replace("cats","dogs")
+print(B)
 # Find substrings
-name.find("Paw")
+print(name.find("Paw"))
 # raw string "r" is used to treat string as raw text, meaning it inteprets \n, \t and other escape sequences as literal characters, e.g.:
 file_destination = "C:\new_folder\file.txt"
 print(file_destination) # escape sequence
@@ -39,8 +40,12 @@ print(raw_string)
 #------------------------------------------------------------------------------------------------------------
 # Tuples and lists
 Ratings = (10,9,4,7,1,8,2,3)
+print(Ratings)
 RatingsSorted = sorted(Ratings)
+print(RatingsSorted)
 List = ["Matt", 9.12, 2002]
+print(List)
 # Unlike tuples, lists are mutable, meaning they can be changed - e.g. extended using L.extend(["Bournemouth",2024])
-L[0] # is a way of finding elements using indices
-L.append(["Bournemouth",2024]) # This will extend the list but will only add 1 new index ["Bournemouth",2024], instead of adding both elements separately
+print(List[0]) # is a way of finding elements using indices
+List.append(["Bournemouth",2024]) # This will extend the list but will only add 1 new index ["Bournemouth",2024], instead of adding both elements separately
+print(List)
