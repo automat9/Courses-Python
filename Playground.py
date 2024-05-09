@@ -49,3 +49,18 @@ print(List)
 print(List[0]) # is a way of finding elements using indices
 List.append(["Bournemouth",2024]) # This will extend the list but will only add 1 new index ["Bournemouth",2024], instead of adding both elements separately
 print(List)
+say_what=('say','what','you','will')
+print(say_what[-1])
+A=(1,2,3,4,5)
+print(A[1:4]) # elements from index 1 to 3 (element 1 = index 0, element 4 = index 3)
+# [:3] means from the beginning up to index 2
+# [2:] from index 2 to the end
+# [::2] every second element
+B=[1,2,[3,'a'],[4,'b']]
+print(B[3][1]) # FIND EXPLANATION (ask chatgpt)
+[1,2,3]+[1,1,1]
+A=[1]
+A.append([2,3,4,5])
+print(A)
+len(A) # counts the length of the list
+
