@@ -45,7 +45,7 @@ RatingsSorted = sorted(Ratings)
 print(RatingsSorted)
 List = ["Matt", 9.12, 2002]
 print(List)
-# Unlike tuples, lists are mutable, meaning they can be changed - e.g. extended using L.extend(["Bournemouth",2024])
+# Unlike tuples, lists are mutable, meaning the values can be changed after being created - e.g. extended using L.extend(["Bournemouth",2024])
 print(List[0]) # is a way of finding elements using indices
 List.append(["Bournemouth",2024]) # This will extend the list but will only add 1 new index ["Bournemouth",2024], instead of adding both elements separately
 print(List)
@@ -63,4 +63,15 @@ A=[1]
 A.append([2,3,4,5])
 print(A)
 len(A) # counts the length of the list
+#------------------------------------------------------------------------------------------------------------
+# Dictionaries - creating one
+DictionaryA = {"Key1": 1, "Key2": 2, "Key3": 3}
+print(DictionaryA)
+DictionaryA["Key1"] # Will revtrive the value of Key1
+DictionaryA.keys() # Will give all the keys in dictionary
+DictionaryA.values() # Same but with values
+DictionaryA["Key4"] = "4" # This will app Key4 to the dictionary
+del(DictionaryA["Key"]) # This will delete Key4
+DO QUIZ
+
 
