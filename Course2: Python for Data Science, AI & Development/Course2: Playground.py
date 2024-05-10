@@ -71,8 +71,8 @@ DictionaryA["Key1"] # Will revtrive the value of Key1
 DictionaryA.keys() # Will give all the keys in dictionary
 DictionaryA.values() # Same but with values
 DictionaryA["Key4"] = "4" # This will app Key4 to the dictionary
-del(DictionaryA["Key"]) # This will delete Key4
-"Key4" in Dictionary.A # verifies if Key4 is in dictionary - True or False
+del(DictionaryA["Key4"]) # This will delete Key4
+"Key4" in DictionaryA # verifies if Key4 is in dictionary - True or False
 # Lab excercise
 inventory = {}
 # Create first variable
@@ -86,15 +86,15 @@ inventory["ProductNo1_quantity"]= ProductNo1_quantity
 inventory["ProductNo1_price"]= ProductNo1_price
 inventory["ProductNo1_release"]= ProductNo1_release
 # Second variable
-Product Name= "Laptop"
-Product Quantity= 10
-Product price = 50000
-Product Release Year= 2023
+ProductNo2 = "Laptop"
+ProductNo2_quantity= 10
+ProductNo2_price = 50000
+ProductNo2_release= 2023
 # Add to the dictionary
 inventory["ProductNo2"]= ProductNo2
 inventory["ProductNo2_quantity"]= ProductNo2_quantity
 inventory["ProductNo2_price"]= ProductNo2_price
-inventory["ProductNo2_release"]=ProductNo2_releaseYear
+inventory["ProductNo2_release"]=ProductNo2_release
 # Show the dictionary, check if release year is in the inventory, and then delease release year for both variables
 print(inventory)
 "ProductNo1_release" in inventory
@@ -114,3 +114,4 @@ SetFruitAndVeg = SetFruit & SetVeg
 print(SetFruitAndVeg) # prints intersection of both sets
 SetFruit. union(SetVeg) # prints union of both sets
 SetVeg.issubset(SetFruit)
+SetFruitAndVeg.issubset(SetFruit)
