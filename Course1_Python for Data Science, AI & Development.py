@@ -64,14 +64,53 @@ A.append([2,3,4,5])
 print(A)
 len(A) # counts the length of the list
 #------------------------------------------------------------------------------------------------------------
-# Dictionaries - creating one
-DictionaryA = {"Key1": 1, "Key2": 2, "Key3": 3}
+# Dictionaries
+DictionaryA = {"Key1":1, "Key2":2, "Key3":3}
 print(DictionaryA)
 DictionaryA["Key1"] # Will revtrive the value of Key1
 DictionaryA.keys() # Will give all the keys in dictionary
 DictionaryA.values() # Same but with values
 DictionaryA["Key4"] = "4" # This will app Key4 to the dictionary
 del(DictionaryA["Key"]) # This will delete Key4
-DO QUIZ
-
-
+"Key4" in Dictionary.A # verifies if Key4 is in dictionary - True or False
+# Lab excercise
+inventory = {}
+# Create first variable
+ProductNo1 = "Mobile Phone"
+ProductNo1_quantity = 5
+ProductNo1_price = 20000
+ProductNo1_release = 2020
+# Add first variable to the dictionary
+inventory["ProductNo1"]= ProductNo1
+inventory["ProductNo1_quantity"]= ProductNo1_quantity
+inventory["ProductNo1_price"]= ProductNo1_price
+inventory["ProductNo1_release"]= ProductNo1_release
+# Second variable
+Product Name= "Laptop"
+Product Quantity= 10
+Product price = 50000
+Product Release Year= 2023
+# Add to the dictionary
+inventory["ProductNo2"]= ProductNo2
+inventory["ProductNo2_quantity"]= ProductNo2_quantity
+inventory["ProductNo2_price"]= ProductNo2_price
+inventory["ProductNo2_release"]=ProductNo2_releaseYear
+# Show the dictionary, check if release year is in the inventory, and then delease release year for both variables
+print(inventory)
+"ProductNo1_release" in inventory
+del(inventory["ProductNo1_release"])
+del(inventory["ProductNo2_release"])
+# Syntax to extrack the keys as a list
+list(dict.keys())
+#------------------------------------------------------------------------------------------------------------
+# Sets
+SetFruit = {"apple", "orange", "passionfruit", "pineapple", "cranberry", "tomatoe", "apple", "orange"} # Duplicates apple and orange will not be printed
+set() # Converting lists into sets
+SetFruit.add("another fruit")
+SetFruit.remove("another fruit")
+"apple" in SetFruit
+SetVeg = {"potatoe", "carrot", "salad", "onions", "tomatoe"}
+SetFruitAndVeg = SetFruit & SetVeg
+print(SetFruitAndVeg) # prints intersection of both sets
+SetFruit. union(SetVeg) # prints union of both sets
+SetVeg.issubset(SetFruit)
