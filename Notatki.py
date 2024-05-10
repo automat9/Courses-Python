@@ -13,3 +13,4 @@
 # First element in a list using index = L[0], but LAST = L[-1]
 # Dictionaries use curly brackets {}, and have keys instead of indices and values instead of elements. The *key* difference is that the keys don't have to be integers
 # Sets are a type of collection like lists, tuples, but unlike them, sets are unordered (no record of element position), furthermore, they act like sets in mathematics, they can have intersections and unions
+# = is used for assignment (e.g. A = (1,2,3,4,5), whereas == is used for comparison (to check if A & B are equal, try print(sum(A)), print(sum(B))
