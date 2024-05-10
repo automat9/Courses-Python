@@ -14,3 +14,5 @@
 # Dictionaries use curly brackets {}, and have keys instead of indices and values instead of elements. The *key* difference is that the keys don't have to be integers
 # Sets are a type of collection like lists, tuples, but unlike them, sets are unordered (no record of element position), furthermore, they act like sets in mathematics, they can have intersections and unions
 # = is used for assignment (e.g. A = (1,2,3,4,5), whereas == is used for comparison (to check if A & B are equal, try print(sum(A)), print(sum(B))
+# Logic operators take boolean values and produce different boolean values e.g. turning True using not(True) into False, False into True using not(False) - other logics include also be OR & AND
+
