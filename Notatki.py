@@ -12,3 +12,4 @@
 # Another example: tuple1 = ("disco",10,1.2), if we type tuple1[0]: "disco, duple1[2]: 1.2
 # First element in a list using index = L[0], but LAST = L[-1]
 # Dictionaries use curly brackets {}, and have keys instead of indices and values instead of elements. The *key* difference is that the keys don't have to be integers
+# Sets are a type of collection like lists, tuples, but unlike them, sets are unordered (no record of element position), furthermore, they act like sets in mathematics, they can have intersections and unions
