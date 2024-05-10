@@ -16,7 +16,7 @@ print(name[6:14])
 print(name[::2])
 print(name[0:7:2])
 len("Matt Pawlaczyk") # = length of string
-Statement = name + "is the best" # Combining strings
+Statement = name + "is the best" # combining strings
 print(Statement)
 3*"Matt Pawlaczyk" # prints 3 copies of the original string
 # escape sequences are strings that are difficult to input, e.g. new like represented with \n, tab represented with \t
@@ -32,7 +32,7 @@ B=A.replace("cats","dogs")
 print(B)
 # Find substrings
 print(name.find("Paw"))
-# raw string "r" is used to treat string as raw text, meaning it inteprets \n, \t and other escape sequences as literal characters, e.g.:
+# Raw string "r" is used to treat string as raw text, meaning it inteprets \n, \t and other escape sequences as literal characters, e.g.:
 file_destination = "C:\new_folder\file.txt"
 print(file_destination) # escape sequence
 raw_string = r"C:\new_folder\file.txt"
@@ -47,7 +47,7 @@ List = ["Matt", 9.12, 2002]
 print(List)
 # Unlike tuples, lists are mutable, meaning the values can be changed after being created - e.g. extended using L.extend(["Bournemouth",2024])
 print(List[0]) # is a way of finding elements using indices
-List.append(["Bournemouth",2024]) # This will extend the list but will only add 1 new index ["Bournemouth",2024], instead of adding both elements separately
+List.append(["Bournemouth",2024]) # this will extend the list but will only add 1 new index ["Bournemouth",2024], instead of adding both elements separately
 print(List)
 say_what=('say','what','you','will')
 print(say_what[-1])
@@ -67,11 +67,11 @@ len(A) # counts the length of the list
 # Dictionaries
 DictionaryA = {"Key1":1, "Key2":2, "Key3":3}
 print(DictionaryA)
-DictionaryA["Key1"] # Will revtrive the value of Key1
-DictionaryA.keys() # Will give all the keys in dictionary
-DictionaryA.values() # Same but with values
-DictionaryA["Key4"] = "4" # This will app Key4 to the dictionary
-del(DictionaryA["Key4"]) # This will delete Key4
+DictionaryA["Key1"] # will revtrive the value of Key1
+DictionaryA.keys() # will give all the keys in dictionary
+DictionaryA.values() # same but with values
+DictionaryA["Key4"] = "4" # this will app Key4 to the dictionary
+del(DictionaryA["Key4"]) # this will delete Key4
 "Key4" in DictionaryA # verifies if Key4 is in dictionary - True or False
 # Lab excercise
 inventory = {}
@@ -105,13 +105,46 @@ list(dict.keys())
 #------------------------------------------------------------------------------------------------------------
 # Sets
 SetFruit = {"apple", "orange", "passionfruit", "pineapple", "cranberry", "tomatoe", "apple", "orange"} # Duplicates apple and orange will not be printed
-set() # Converting lists into sets
+set(Ratings) # converts list into sets
 SetFruit.add("another fruit")
 SetFruit.remove("another fruit")
 "apple" in SetFruit
 SetVeg = {"potatoe", "carrot", "salad", "onions", "tomatoe"}
-SetFruitAndVeg = SetFruit & SetVeg
+SetFruitAndVeg = SetFruit & SetVeg # finds intersection of both
 print(SetFruitAndVeg) # prints intersection of both sets
-SetFruit. union(SetVeg) # prints union of both sets
-SetVeg.issubset(SetFruit)
+SetFruit.union(SetVeg) # prints union of both sets
+SetVeg.issubset(SetFruit) # contained in the set being referred to
+SetVeg.issuperset(SetFruit) # contains the set being reffered to
 SetFruitAndVeg.issubset(SetFruit)
+SetFruit.difference(SetVeg) # shows all elements in SetFruit
+#------------------------------------------------------------------------------------------------------------
+# Conditions and Branching
+A=6 # assigning value to variable
+A==7 # result = False because not equal
+A>3 # true because it is greater than 6 
+A>=6 # greater than or equal to 6
+A!=6 # not equal to 6 (False because it is)
+# Comparing strings is also possible, also using ! if both strings are different
+# If statements
+age1 = 19
+if(age1>18):
+    print("You're an adult (not really)") # runs only condition is true
+print("This is generated regardless of whether if statement is true or false")
+age2 = 19
+if(age2>18):
+  print("This will generate if condition is true")
+  elif(age2==18):
+    print("This will generate if the first condition is false but this one is true") # there can be multiple elifs e.g. ==19,==20
+else:
+  print("This will generate if both conditions are false")
+print("This will generate regardless - this line is unnecessary")
+# OR & AND logic operators
+album_year = 1990
+if(album_year<1980) or (album_year>1989):
+  print("The Album was made in the 70s or 90s")
+else:
+  print("The Album was made in the 1980s")
+album2_year = 1983
+if(album2_year>1979) and (album2_year<1990):
+  print("This album was made in the 80s")
+
