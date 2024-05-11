@@ -133,7 +133,7 @@ print("This is generated regardless of whether if statement is true or false")
 age2 = 19
 if(age2>18):
   print("This will generate if condition is true")
-  elif(age2==18):
+  elif(age2==18): # this == is very important, only one = will give an error because you want to compare 2 values
     print("This will generate if the first condition is false but this one is true") # there can be multiple elifs e.g. ==19,==20
 else:
   print("This will generate if both conditions are false")
@@ -147,4 +147,7 @@ else:
 album2_year = 1983
 if(album2_year>1979) and (album2_year<1990):
   print("This album was made in the 80s")
+ageMatt = 22
+if ageMatt == 22: # [pay attention to == and : at the end]
+    print("You are 22 years old.")
 
