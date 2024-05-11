@@ -13,6 +13,9 @@
 # First element in a list using index = L[0], but LAST = L[-1]
 # Dictionaries use curly brackets {}, and have keys instead of indices and values instead of elements. The *key* difference is that the keys don't have to be integers
 # Sets are a type of collection like lists, tuples, but unlike them, sets are unordered (no record of element position), furthermore, they act like sets in mathematics, they can have intersections and unions
-# = is used for assignment (e.g. A = (1,2,3,4,5), whereas == is used for comparison (to check if A & B are equal, try print(sum(A)), print(sum(B))
+# = is used for assignment (e.g. A = (1,2,3,4,5), whereas == is used for comparison (to check if A & B are equal, try print(sum(A)), print(sum(B)), != means "not equal to"
 # Logic operators take boolean values and produce different boolean values e.g. turning True using not(True) into False, False into True using not(False) - other logics include also be OR & AND
+# new statement under "if" will only be executed if there's an indent and the statements are true, otherwise the tasks will end
+# else is used if none of the conitions are true before this else statement, else has no condition unlike if (e.g. if age > 18)
+# Branching is basically that whole "if A = B do X, else Y" 
 
