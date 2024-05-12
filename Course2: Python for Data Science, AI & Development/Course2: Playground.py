@@ -150,4 +150,14 @@ if(album2_year>1979) and (album2_year<1990):
 ageMatt = 22
 if ageMatt == 22: # [pay attention to == and : at the end]
     print("You are 22 years old.")
+#------------------------------------------------------------------------------------------------------------
+# Loops
+for number in range(1,11):
+    print(number) # for loop - best suited for sequences where the length is known
+count = 1
+while count <= 10:
+    print(count)
+    count += 1 # while loop - length is unknown, repeating the loop as long as condition is true (make sure the loop can end)
+
+
 
