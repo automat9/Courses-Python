@@ -151,13 +151,32 @@ ageMatt = 22
 if ageMatt == 22: # [pay attention to == and : at the end]
     print("You are 22 years old.")
 #------------------------------------------------------------------------------------------------------------
-# Loops
+# For Loops
 for number in range(1,11):
-    print(number) # for loop - best suited for sequences where the length is known
+    print(number) # best suited for sequences where the length is known
+# another example
+fruits = ["apple", "orange", "grapefruit", "pomegranate", "cranberry"]
+N = len(fruits) # code is executed N times
+for element in range(N): # each time the value of element is increased by 1 for every execution, so that element=0 => print(fruits[0]) => print("apple") and so on
+    print(fruits[element]) # that element thingy here and above can be named as anything, "i", "yolo", "x" etc
+# this code will change the elements in the list
+squares = ['red', 'yellow', 'green', 'purple', 'blue'] # original list
+for i in range(0, 5):
+    print("Before square ", i, 'is',  squares[i]) # will print "Before square 0 is red" i=index, squares[i]=name of index in list
+    squares[i] = 'white' # this changes the definition of squares[i] from red, yellow, green etc to white
+    print("After square ", i, 'is',  squares[i]) # exactly the same formula except squares[i] now has a new definition
+# this code will print both index and element value
+squares=['red', 'yellow', 'green', 'purple', 'blue']
+
+for i, square in enumerate(squares):
+    print(i, square)
+
+
+# While Loops
 count = 1
 while count <= 10:
     print(count)
-    count += 1 # while loop - length is unknown, repeating the loop as long as condition is true (make sure the loop can end)
+    count += 1 # length is unknown, repeating the loop as long as condition is true (make sure the loop can end)
 
 
 
