@@ -158,7 +158,7 @@ for number in range(1,11):
 fruits = ["apple", "orange", "grapefruit", "pomegranate", "cranberry"]
 N = len(fruits) # code is executed N times
 for element in range(N): # each time the value of element is increased by 1 for every execution, so that element=0 => print(fruits[0]) => print("apple") and so on
-    print(fruits[element]) # that element thingy here and above can be named as anything, "i", "yolo", "x" etc
+    print(fruits[element]) # that element thingy here and above can be named as anything, "i", "yolo", "x" etc, it basically means index e.g. first element in the list is 0
 # this code will change the elements in the list
 squares = ['red', 'yellow', 'green', 'purple', 'blue'] # original list
 for i in range(0, 5):
@@ -167,16 +167,34 @@ for i in range(0, 5):
     print("After square ", i, 'is',  squares[i]) # exactly the same formula except squares[i] now has a new definition
 # this code will print both index and element value
 squares=['red', 'yellow', 'green', 'purple', 'blue']
-
 for i, square in enumerate(squares):
     print(i, square)
-
-
+# try to replace value of print() from i to Genres and see what happens
+Genres = ["Rock", "R&B", "Soundtrack", "R&B", "Soul", "Pop"]
+for i in Genres:
+    print(i)
+    
 # While Loops
 count = 1
 while count <= 10:
     print(count)
     count += 1 # length is unknown, repeating the loop as long as condition is true (make sure the loop can end)
-
+#another example
+dates = [1982, 1980, 1973, 2000]
+i = 0
+year = dates[0]
+while(year != 1973):    
+    print(year)
+    i = i + 1
+    year = dates[i]
+print("It took ", i ,"repetitions to get out of loop.")
+# taken from LAB - study this example --- while loop to display values of the rating of an album, exit loop if score < 6
+PlayListRatings = [10, 9.5, 10, 8, 7.5, 5, 10, 10]
+i = 0
+rating = PlayListRatings[0]
+while(i < len(PlayListRatings) and rating >= 6):
+    print(rating)
+    i = i + 1 
+    rating = PlayListRatings[i]  
 
 
