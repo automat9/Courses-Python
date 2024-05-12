@@ -18,4 +18,18 @@
 # new statement under "if" will only be executed if there's an indent and the statements are true, otherwise the tasks will end
 # else is used if none of the conitions are true before this else statement, else has no condition unlike if (e.g. if age > 18)
 # Branching is basically that whole "if A = B do X, else Y" 
-
+# 2 types of loops: for and while
+# for = allows for repeated execution of a set of statements for each item in a sequence (e.g. elements in a list or numbers in range)
+ # syntax for = for value in sequence:
+ # use for when = you know the number of iterations in advance (e.g. how many elements in a list)
+ # example = list of colours = ["green", "red", "orange"], to print all of the colours at the same time, write:
+    # for colour in colours:
+         # print(colour)
+# while = allows for a task to run as long as a certain condition is true, e.g. keep changing colours until you land on green, then stop
+ # syntax while = while >condition<: (indentation is crucial to indicate the scope of the loop)
+ # use while when = you don't know the number of iterations or if you're waiting for a specific condition to be met
+ # example = count = 1 (below) while count <=10: (below & indent) print(count) (below) count+=1 <--- this increases each output by 1, without it the loop will never stop (bad)
+# range function: generates an ordered sequence that can be used in loops
+# if one argument, e.g. range(14), it generates a sequence from 0 up to, but not including given number
+# if two arguments, e.g. range(14,32), it generates a sequence from 14 up to, but not including the second argument
+# example: for number in range(43) print(number)
