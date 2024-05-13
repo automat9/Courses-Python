@@ -33,3 +33,7 @@
 # if one argument, e.g. range(14), it generates a sequence from 0 up to, but not including given number
 # if two arguments, e.g. range(14,32), it generates a sequence from 14 up to, but not including the second argument
 # example: for number in range(43) print(number)
+# functions: reusable blocks of code that execute a certain functionality when it is called
+# e.g. YourVariable=len(YourList) - determines length of list, YV=sum(YL) - total of all elements, YV = sorted (YL) lowest to highest
+# to define a function start with def, decriptive name of function e.g. add1
+# make sure to document what each function does, using triple """description""" or #
