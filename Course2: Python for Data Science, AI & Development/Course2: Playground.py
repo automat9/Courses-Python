@@ -173,6 +173,20 @@ for i, square in enumerate(squares):
 Genres = ["Rock", "R&B", "Soundtrack", "R&B", "Soul", "Pop"]
 for i in Genres:
     print(i)
+# 2 multiplication tables
+print("Multiplication table of 6: ")
+for i in range (10):
+    print("6*", i, "=", 6*i)
+print("Multiplication table of 7: ")
+for i in range (10):
+    print("7*", i, "=", 7*i)
+# some more basic for loops
+for x in range(0, 3):
+    print(x)
+for x in ['A', 'B', 'C']:
+    print(x + 'A')
+for i, x in enumerate(['A', 'B', 'C']):
+    print(i, x)
     
 # While Loops
 count = 1
@@ -196,5 +210,19 @@ while(i < len(PlayListRatings) and rating >= 6):
     print(rating)
     i = i + 1 
     rating = PlayListRatings[i]  
+# This will create a new list with animals whose names are made of 7 letter
+Animals = ["lion", "giraffe", "gorilla", "parrots", "crocodile","deer", "swan"]
+SevenletterAnimals=[] 
+i = 0
+while(i<len(Animals)):
+      j=Animals[i]
+      if(len(j)==7):
+         SevenletterAnimals.append(j)
+      i = i +1
+print(SevenletterAnimals)
+#------------------------------------------------------------------------------------------------------------
+# Functions
+
+
 
 
