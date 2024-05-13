@@ -222,7 +222,22 @@ while(i<len(Animals)):
 print(SevenletterAnimals)
 #------------------------------------------------------------------------------------------------------------
 # Functions
+def f(a): # input
+    b=(a+4)*9; # function
+    return b # output
+f(9) # input returns output
 
+def f(a):
+    """
+    this explains what the hell is going on
+    """
+    # rest of code goes in here
+help(f) # this will explain what function f does by providing description from the documentation strings
 
+def f2(a, b): # example with multiple parameters
+    c=a*b
+    return c
+f2(4,2) # can also do floats e.g. f2(53.234,43.21)
+COME BACK 6:35
 
 
