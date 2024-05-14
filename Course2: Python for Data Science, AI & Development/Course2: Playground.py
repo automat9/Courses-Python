@@ -222,10 +222,15 @@ while(i<len(Animals)):
 print(SevenletterAnimals)
 #------------------------------------------------------------------------------------------------------------
 # Functions
-def f(a): # input
-    b=(a+4)*9; # function
+def f(a): # input parameter "a"
+    b=(a+4)*9; # function defines another variable using the given parameter
     return b # output
 f(9) # input returns output
+
+def f2(a, b): # example with multiple parameters
+    c=a*b
+    return c
+f2(4,2) # can also do floats e.g. f2(53.234,43.21)
 
 def f(a):
     """
@@ -234,10 +239,23 @@ def f(a):
     # rest of code goes in here
 help(f) # this will explain what function f does by providing description from the documentation strings
 
-def f2(a, b): # example with multiple parameters
-    c=a*b
-    return c
-f2(4,2) # can also do floats e.g. f2(53.234,43.21)
-COME BACK 6:35
-
-
+def thisFunction_doesNot_do_anything():
+    pass # pass is used as a placeholder statement when we want to create a new function, but not specify any functionality yet, pass is mandatory to ensure the code is syntactically correct
+#------
+moja_lista = [] # this initial list will work as the data structure for the rest of this function
+def dodaj_element(data_structure, element): # data_structure is the list to which I want to add elements, element is what I want to add to the list
+    data_structure.append(element) # assigning functionality to "dodaj_element" - adds elements provided
+def odejmij_element(data_structure, element): 
+    if element in data_structure: # checks if element you want to remove is in the data set
+        data_structure.remove(element) # assigning functionality
+    else:
+        print(f"{element} nie istnieje w zbiorze") # in case element is not in the set
+dodaj_element(moja_lista, 19)
+dodaj_element(moja_lista, 22)
+dodaj_element(moja_lista, 24)
+print("Moja lista to: ", moja_lista)
+odejmij_element(moja_lista, 24)
+print("Moja nowa lista to: ", moja_lista)
+odejmij_element(moja_lista, 2245)
+print("Kurde, nie mamy takiej liczby :(")
+#------
