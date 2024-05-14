@@ -33,7 +33,11 @@
 # if one argument, e.g. range(14), it generates a sequence from 0 up to, but not including given number
 # if two arguments, e.g. range(14,32), it generates a sequence from 14 up to, but not including the second argument
 # example: for number in range(43) print(number)
-# functions: reusable blocks of code that execute a certain functionality when it is called
+# functions: reusable blocks of code that execute a certain functionality when it is called, used if you need to perform a function multiple times, no need to duplicate the same code, just use the defined function instead
 # e.g. YourVariable=len(YourList) - determines length of list, YV=sum(YL) - total of all elements, YV = sorted (YL) lowest to highest
 # to define a function start with def, decriptive name of function e.g. add1
 # make sure to document what each function does, using triple """description""" or #
+# in many cases a function does not have a return statement, in this case the function returns nothing, e.g. function def MP(): print("Mateusz Pawlaczyk") will only print the string if MP() is called
+# bult-in functions include: len():, sum();, max():, min():
+# keep in mind that variables can be both global (defined outside functions, accessible everywhere), and local (only usable within the functions they were defined in)
+
