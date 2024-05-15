@@ -40,4 +40,5 @@
 # in many cases a function does not have a return statement, in this case the function returns nothing, e.g. function def MP(): print("Mateusz Pawlaczyk") will only print the string if MP() is called
 # bult-in functions include: len():, sum();, max():, min():
 # keep in mind that variables can be both global (defined outside functions, accessible everywhere), and local (only usable within the functions they were defined in)
+# The whole process is: 1) def "function name"() 2) input parameters or arguments in the parentheses 3) can also define parameters inside these parentheses 4) there's a body within every function starting with : and is indented 5) you can place documentation before the body 5) return exists a function, optionally passing back a value
 
