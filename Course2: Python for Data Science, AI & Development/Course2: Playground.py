@@ -267,4 +267,4 @@ def type_of_album(artist, album, year_released):
         return "Oldie"   
 x = type_of_album("Michael Jackson", "Thriller", 1980)
 print(x)
-COME BACK TO STRING COMPARISON IN FUNCTIONS ROUGHLY HALF WAY THROUGH
+COME BACK TO STRING COMPARISON IN FUNCTIONS ROUGHLY HALF WAY THROUGH 34MIN LEFT
