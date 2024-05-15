@@ -241,7 +241,7 @@ help(f) # this will explain what function f does by providing description from t
 
 def thisFunction_doesNot_do_anything():
     pass # pass is used as a placeholder statement when we want to create a new function, but not specify any functionality yet, pass is mandatory to ensure the code is syntactically correct
-#------
+#------ more complex function that adds/removes elements from a list
 moja_lista = [] # this initial list will work as the data structure for the rest of this function
 def dodaj_element(data_structure, element): # data_structure is the list to which I want to add elements, element is what I want to add to the list
     data_structure.append(element) # assigning functionality to "dodaj_element" - adds elements provided
@@ -258,4 +258,13 @@ odejmij_element(moja_lista, 24)
 print("Moja nowa lista to: ", moja_lista)
 odejmij_element(moja_lista, 2245)
 print("Kurde, nie mamy takiej liczby :(")
-#------
+#------ example of a function that uses if/else statements
+def type_of_album(artist, album, year_released):
+    print(artist, album, year_released)
+    if year_released > 1980:
+        return "Modern"
+    else:
+        return "Oldie"   
+x = type_of_album("Michael Jackson", "Thriller", 1980)
+print(x)
+COME BACK TO STRING COMPARISON IN FUNCTIONS ROUGHLY HALF WAY THROUGH
