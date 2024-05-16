@@ -270,4 +270,36 @@ print(x)
 
 #------------------------------------------------------------------------------------------------------------
 # Exception Handling
-46min
+try:
+    a = [1, 2, 3]
+    a[10] # index error, list only has 3 indices
+except:
+    print("lol what did you think was gonna happen dumbass")
+#------ divide b given by the used by a
+a = 1
+try:
+    b = int(input("Please enter a number to divide a"))
+    a = a/b
+except ZeroDivisionError:
+    print("Can't divide by 0") # this will only occur if b = 0
+except ValueError:
+    print("You need to provide a number")
+except: # general except statement in case anything else happens 
+    print("Something went wrong") 
+else: # if no exceptions
+    print("success a=", a)
+finally: # will be executed at the end of the try except no matter what
+    print("Processing complete")
+#------ divide numerator by denominator, if 0 then return cannot divide by zero
+def safe_divide(numerator,denominator):
+    try:
+        result = numerator / denominator
+        return result
+    except ZeroDivisionError:
+        print("Error: Cannot divide by zero.")
+        return None
+# Test
+numerator=int(input("Enter the numerator value:-"))
+denominator=int(input("Enter the denominator value:-"))
+print(safe_divide(numerator,denominator))
+15min
