@@ -298,8 +298,8 @@ def safe_divide(numerator,denominator):
     except ZeroDivisionError:
         print("Error: Cannot divide by zero.")
         return None
-# Test
 numerator=int(input("Enter the numerator value:-"))
 denominator=int(input("Enter the denominator value:-"))
 print(safe_divide(numerator,denominator))
-15min
+#------------------------------------------------------------------------------------------------------------
+# Objects & Classes
