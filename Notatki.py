@@ -41,4 +41,12 @@
 # bult-in functions include: len():, sum();, max():, min():
 # keep in mind that variables can be both global (defined outside functions, accessible everywhere), and local (only usable within the functions they were defined in)
 # The whole process is: 1) def "function name"() 2) input parameters or arguments in the parentheses 3) can also define parameters inside these parentheses 4) there's a body within every function starting with : and is indented 5) you can place documentation before the body 5) return exists a function, optionally passing back a value
-
+# Exception handling = alert when something unexpected happens while running a program.
+# Errors are big, computer or system related, they prevent the program stop working completly, exceptions are controlled issues that are less severe and are a result of problematic code execution
+# examples of exception classes: ArithmeticError, IOError, ValueError (e.g. trying to convert a non-numeric string to an integer)
+# Process:
+try: # code that may result in an exception is contained in the try block
+    result = 10 / 0
+except ZeroDivisionError: # if an exception occurs, the code directly jumps to this except block
+    print("Error: Cannot divide by zero") # defining how we want this to be handled, e.g. message or alternative action
+print("outside of try and except block") # after the except block, the program continues executing the remaining code
