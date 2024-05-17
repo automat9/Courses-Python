@@ -303,3 +303,27 @@ denominator=int(input("Enter the denominator value:-"))
 print(safe_divide(numerator,denominator))
 #------------------------------------------------------------------------------------------------------------
 # Objects & Classes
+# Creating a class and objects
+class Car:
+    max_speed = 120  # # Class attribute (shared by all instances, speed in km/h)
+    def __init__(self, make, model, color, speed=0): # init is a constructor method (initialises instance attributes)
+        self.make = make
+        self.model = model
+        self.color = color
+        self.speed = speed  # Initial speed is set to 0
+    def accelerate(self, acceleration): # Method for accelerating the car
+        if self.speed + acceleration <= Car.max_speed:
+            self.speed += acceleration
+        else:
+            self.speed = Car.max_speed
+    def get_speed(self): # Method to get the current speed of the car
+        return self.speed
+# Creating 2 objects of the car class
+car1 = Car("Ford", "Fiesta", "Red")
+car2 = Car("Volkswagen", "Golf", "Blue")
+car1.accelerate(70)
+car2.accelerate(200)
+# Print the current speeds of the cars
+print(f"{car1.make} {car1.model} is currently at {car1.get_speed()} km/h.")
+print(f"{car2.make} {car2.model} is currently at {car2.get_speed()} km/h.") # This will show 120km/h because he max speed is 120 and acelerating by 200 units will result in max speed
+15min
