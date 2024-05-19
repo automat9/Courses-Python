@@ -321,9 +321,71 @@ class Car:
 # Creating 2 objects of the car class
 car1 = Car("Ford", "Fiesta", "Red")
 car2 = Car("Volkswagen", "Golf", "Blue")
-car1.accelerate(70)
+car1.accelerate(70) # the dot notaion means "to apply the method to the object", in this case to apply acceleration of 70 to car1
 car2.accelerate(200)
 # Print the current speeds of the cars
 print(f"{car1.make} {car1.model} is currently at {car1.get_speed()} km/h.")
 print(f"{car2.make} {car2.model} is currently at {car2.get_speed()} km/h.") # This will show 120km/h because he max speed is 120 and acelerating by 200 units will result in max speed
-15min
+# Drawing circles using a library:
+class Circle:
+    # Constructor
+    def __init__(self, radius=3, color='blue'): # american english spelling due to the library containing american spelling
+        self.radius = radius
+        self.color = color 
+    # Method for adding radious
+    def add_radius(self, r):
+        self.radius = self.radius + r
+        return(self.radius)
+    # Method for drawing circle
+    def drawCircle(self):
+        plt.gca().add_patch(plt.Circle((0, 0), radius=self.radius, fc=self.color))
+        plt.axis('scaled')
+        plt.show() 
+InitialCircle = Circle() # default circle with the radious of 3 and colour blue
+InitialCircle.drawCircle()
+RedCircle = Circle(22, "red") # custom circles
+RedCircle.drawCircle()
+BlackCircle = Circle(25,"black")
+BlackCircle.drawCircle()
+
+# Now the same but rectangles
+class Rectangle:
+    # Constructor
+    def __init__(self, width=2, height=3, color='r'):
+        self.height = height 
+        self.width = width
+        self.color = color
+    # Method
+    def drawRectangle(self):
+        plt.gca().add_patch(plt.Rectangle((0, 0), self.width, self.height ,fc=self.color))
+        plt.axis('scaled')
+        plt.show()
+InitialRectangle = Rectangle()
+InitialRectangle.drawRectangle()
+MyCustomRectangle = Rectangle(234, 943,"g") # g can be used instead of green
+MyCustomRectangle.drawRectangle()
+
+# Creating another Car class, adding "assign capacity" and "show properties" methods
+class Car:
+    Colour = "White"
+    def __init__(self, MaxSpeed, Mileage):
+        self.MaxSpeed = MaxSpeed
+        self.Mileage = Mileage
+        self.Capacity = None
+        
+    def AssignCapacity(self, Capacity):
+        self.Capacity = Capacity
+        
+    def ShowProperties(self):
+        print("Properties of the Car: ");
+        print("Max Speed: ", self.MaxSpeed);
+        print("Mileage: ", self.Mileage);
+        print("Capacity: ", self.Capacity);
+        print("Colour: ", self.Colour)
+        
+Car1 = Car(200, 20)
+Car1.AssignCapacity(5)
+Car1.ShowProperties()
+Car2 = Car(180, 25)
+Car2.AssignCapacity(4)
+Car2.ShowProperties()
