@@ -53,3 +53,6 @@ print("outside of try and except block") # after the except block, the program c
 # Classes: blueprints or templetes for creating objects. Define structure and behaviour that their objects will have (e.g. class = car, attributes = colour, speed, methods (functions) = accelerate)
 # Objects: fundamental units in python, represent real-world entity or concept, can be tangible (e.g. car), or abstract (student grade)
      # 2 characteristics: state (attributes that describe objects e.g. colour or speed), behaviour (actions that object can perform i.e. functions)
+# Summary:
+# Class = blueprint that contains attributes and methods (e.g. colour, size, weight, but also creating methods like change size)
+# Methods = ways to interact with objects from a specific class (e.g. accelerating a car)
