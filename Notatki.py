@@ -56,3 +56,4 @@ print("outside of try and except block") # after the except block, the program c
 # Summary:
 # Class = blueprint that contains attributes and methods (e.g. colour, size, weight, but also creating methods like change size)
 # Methods = ways to interact with objects from a specific class (e.g. accelerating a car)
+# Open() is used to read the text files (".txt" files), it involved extracting and processing the data stored within them.
