@@ -389,3 +389,36 @@ Car1.ShowProperties()
 Car2 = Car(180, 25)
 Car2.AssignCapacity(4)
 Car2.ShowProperties()
+#------------------------------------------------------------------------------------------------------------
+# Text Analysis - Process of extracting meaningful info and insights from textual data, aka text mining/analytics
+# 3 tasks: a) convert all the text to lowercase b) find frequency of each word c) track the frequency of a particular word
+# 1) Define a string
+givenstring="Lorem ipsum dolor! diam amet, consetetur Lorem magna. sed diam nonumy eirmod tempor. diam et labore? et diam magna. et diam amet."
+# 2) Define the class and its attributes
+class TextAnalyser:
+    def __init__(self, text):
+# 3) Implement a code to format the text in lowercase and remove punctuation       
+        formattedText = text.replace(".","").replace("!", "").replace("?", "").replace(",", "") # remove punctuation
+        formattedText = formattedText.lower() # make text lowercase
+        self.fmtText = formattedText
+# 4) Code to count the frequency of unique words   
+    def freqAll(self):
+        wordList = self.fmtText.split(" ") # spliting text into words
+        freqMap = {} # creating dictionary
+        for word in set(wordList): 
+            freqMap[word] = wordList.count(word)
+        return freqMap 
+# 5) Code to count the frequency of a specific word
+    def freq0f(self,word):
+        freqDict = self.freqAll()
+        if word in freqDict:
+            return freqDict[word]
+        else:
+            return 0
+analysed = TextAnalyser(givenstring) # instance of TextAnalyser class
+print("Formatted Text: ", analysed.fmtText) # converts data into lowercase
+freqMap = analysed.freqAll() # counts frequency of all unique words
+print(freqMap)
+word = "lorem" # counts frequency of a specific word
+frequency = analysed.freq0f(word)
+print("The word", word, "appears", frequency, "times.")
