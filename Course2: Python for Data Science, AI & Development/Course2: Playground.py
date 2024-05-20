@@ -422,3 +422,10 @@ print(freqMap)
 word = "lorem" # counts frequency of a specific word
 frequency = analysed.freq0f(word)
 print("The word", word, "appears", frequency, "times.")
+#------------------------------------------------------------------------------------------------------------
+# Reading a file with Open()
+# Opening the file in read (r) mode
+file =open("file.txt", "r") # 2 parameters, file path + mode (the others being w for writing and a for appending)
+with open("file.txt", "r") as file: # best practice, ensures proper closure of files when indented blocks are completed - no need to call close()
+    # further code yaddy yadda 
+    reading file - 2. reading the content line by line
