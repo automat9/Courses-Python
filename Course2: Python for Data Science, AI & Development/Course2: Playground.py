@@ -459,4 +459,24 @@ with open(example1,"r") as file1:
 Iteration 0 :  This is line 1 
 Iteration 1 :  This is line 2
 Iteration 2 :  This is line 3
-30min left
+#------------------------------------------------------------------------------------------------------------
+# Writing files with Open
+with open("file.txt", "w") as file: # w instead of r this time, now we can write in the file
+    file.write("This is line 1\n") # again, \n starts a new line
+    file.write("This is line 2") 
+    # closes notebook automatically thanks using with function
+# This is how you can use loops to add multiple lines at the same time
+Lines = ["This is line 1", "This is line 2", "This is line 3"]
+with open('Example3.txt', 'w') as file2:
+    for line in Lines:
+        file2.write(line + "\n")
+# This is how you can append data to an existing file
+new_data = "This is line C"
+with open('Example2.txt', 'a') as file1: # a for append
+    file1.write(new_data + "\n")
+# Copying contents from one file to another
+with open('source.txt', 'r') as source_file:
+    with open('destination.txt', 'w') as destination_file:
+        for line in source_file:
+            destination_file.write(line)
+# Last excercise from lab to do
