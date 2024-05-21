@@ -425,7 +425,37 @@ print("The word", word, "appears", frequency, "times.")
 #------------------------------------------------------------------------------------------------------------
 # Reading a file with Open()
 # Opening the file in read (r) mode
-file =open("file.txt", "r") # 2 parameters, file path + mode (the others being w for writing and a for appending)
+file =open("/desktop/file.txt", "r") # 2 parameters, file path & file name + mode (the others being w for writing and a for appending)
 with open("file.txt", "r") as file: # best practice, ensures proper closure of files when indented blocks are completed - no need to call close()
-    # further code yaddy yadda 
-    reading file - 2. reading the content line by line
+    File = "file.txt"
+    Example = open(File, "r")
+    FileContent = Example.read()
+    print(FileContent) # or something like that
+# All steps in order + bonus commands
+#1) Import a file, if working locally you need a path i.e. look above
+#2) file.name = returns the name of the file, file.mode = returns the mode e.g. r or w, file.read() = reads raw text, print(x) where x is a variable to which the file is assigned = returns formatted text, type(x) = returns string or something, file.close() = you guessed it, file.closed = verifies if file closed
+#3) read first 4 characters (including spaces)
+ with open("file.txt", "r") as File:
+     print(File.read(4)) 
+#4) read multiple amounts of characters:
+with open(example1, "r") as file1:
+    print(file1.read(4))
+    print(file1.read(4)) # this will start from where the first line ended (4th character)
+    print(file1.read(7))
+    print(file1.read(15))
+#5) if you want to read one line at a time (if your text file has multiple \n lines) do:
+with open(example1, "r") as file1:
+    print(file1.readline())
+#6) readline allows us to specify how many characters we wanna read, but it can only read one line, so if line 1 has 20 characters and we want to read 5000, it'll only print off the 20 that are in the line:
+print(file1.readline(20)) # does not read past the end of line
+print(file1.read(20)) # Returns the next 20 chars
+#7) using a loop to iterate through the lines:
+with open(example1,"r") as file1:
+        i = 0;
+        for line in file1:
+            print("Iteration", str(i), ": ", line)
+            i = i + 1
+# result:
+Iteration 0 :  This is line 1 
+Iteration 1 :  This is line 2
+Iteration 2 :  This is line 3
