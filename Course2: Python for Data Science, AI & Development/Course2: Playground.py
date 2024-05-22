@@ -484,3 +484,4 @@ with open('source.txt', 'r') as source_file:
 # Panads
 import pandas as pd # this downloads pandas onto your computer, initiate in jupyter
 DataFrame = pd.read_csv("my_fileWhatever_itCan_be.csv") # this loads data from my source and assigns it to a variable
+35min
