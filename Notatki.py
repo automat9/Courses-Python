@@ -57,3 +57,11 @@ print("outside of try and except block") # after the except block, the program c
 # Class = blueprint that contains attributes and methods (e.g. colour, size, weight, but also creating methods like change size)
 # Methods = ways to interact with objects from a specific class (e.g. accelerating a car)
 # Open() is used to read the text files (".txt" files), it involved extracting and processing the data stored within them.
+# Dependencies or libraries are prewritten codes to help solve problems - e.g. pandas is a popular library for data analysis
+# Pandas is open source and data manipulation and analysis library, great for structured data, making it fundamental for analysts
+# Used to handle various formats, like tabular data, time series data and more - essential of the data processing workflow
+# 2 primary data structures offered: DataFrame and Series, first is a table that can be manipulated, second is a single column or row of data
+# Makes it easy to read data from CSV, Excel, SQL databases and more, can also export data in these formats
+# Can combine multiple DataFrames using methods like merge and join (similar to SQL), to create more complex datasets
+# Excellent indexing makes accessing specific rows of data very quick
+# Custom data structures means you're not limited to tables and series
