@@ -507,5 +507,25 @@ print(df[1:3]) # accessing specific rows
 unique_dates = df['Age'].unique() # this will determine the unique elements in a column if many of them are the same
 high_above_102 = df[df['Age'] > 25] # this will filter albums released after a certain year
 df.to_csv('trading_data.csv', index=False) # saving a dataframe using to_csv method
-when you return from work, remember to download reading files from coursera
-15min
+#--- another example of creating a dataframe using a dictionary:
+#Import pandas
+import pandas as pd
+#Define a dictionary 'x'
+x = {'Name': ['Rose','John', 'Jane', 'Mary'], 'ID': [1, 2, 3, 4], 'Department': ['Architect Group', 'Software Group', 'Design Team', 'Infrastructure'], 
+      'Salary':[100000, 80000, 50000, 60000]}
+#casting the dictionary to a DataFrame
+df = pd.DataFrame(x)
+#display the result df
+df
+# Retreiving a column and assigning it to a variable x
+x = df[['ID']] # try other keys as well, like name, department
+x
+# Retreiving multiple columns and assigning them to another variable
+z = df[['Department','Salary','ID']]
+z
+# To view the column as a series, just use one bracket
+x = df['ID']
+x
+# And to check the type of x type:
+type(x)
+start from loc and iloc()
