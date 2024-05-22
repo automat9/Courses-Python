@@ -479,4 +479,8 @@ with open('source.txt', 'r') as source_file:
     with open('destination.txt', 'w') as destination_file:
         for line in source_file:
             destination_file.write(line)
-# Last excercise from lab to do
+# Last excercise from lab is an interesting example, do have a look if you want a more complex code
+#------------------------------------------------------------------------------------------------------------
+# Panads
+import pandas as pd # this downloads pandas onto your computer, initiate in jupyter
+DataFrame = pd.read_csv("my_fileWhatever_itCan_be.csv") # this loads data from my source and assigns it to a variable
