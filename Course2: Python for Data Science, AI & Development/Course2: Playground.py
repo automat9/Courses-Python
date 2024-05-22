@@ -482,6 +482,29 @@ with open('source.txt', 'r') as source_file:
 # Last excercise from lab is an interesting example, do have a look if you want a more complex code
 #------------------------------------------------------------------------------------------------------------
 # Panads
-import pandas as pd # this downloads pandas onto your computer, initiate in jupyter
-DataFrame = pd.read_csv("my_fileWhatever_itCan_be.csv") # this loads data from my source and assigns it to a variable
-35min
+import pandas as pd # this downloads pandas onto your computer, initiate in jupyter, this HAS TO BE INITIATED before the rest of your pandas code
+DataFrame = pd.read_csv("my_fileWhatever_itCan_be.csv") # this loads data from my source and assigns it to a variable - make sure to change it to an actual file path like \desktop\blablabla
+#--- series
+data = [10, 20, 30, 40, 50] # here we're creating a series, a single column with labels or indeces for each element
+s = pd.Series(data) # assigning the series to a variable
+print(s)
+# You can access elements using 3 different ways:
+print(s[2]) # accessing element with label 2
+print(s.iloc[3]) # accessing element at position 3
+print(s[1:4]) # accessing multiple elements from the range
+#--- dataframes
+data = {'Name': ['Alice', 'Bob', 'Charlie', 'David'],
+        'Age': [25, 30, 35, 28],
+        'City': ['New York', 'San Francisco', 'Los Angeles', 'Chicago']} # first we create a dictionary
+df = pd.DataFrame(data) # assign it to a variable
+print(df) # print the variable
+# accessing stuff from dataframes:
+print(df['Name']) # accessing the name column
+print(df.iloc[2]) # access THIRD row by POSITION
+print(df.loc[2]) # access third row by label
+print(df[['Name', 'Age']]) # select specific columns
+print(df[1:3]) # accessing specific rows
+unique_dates = df['Age'].unique() # this will determine the unique elements in a column if many of them are the same
+high_above_102 = df[df['Age'] > 25] # this will filter albums released after a certain year
+df.to_csv('trading_data.csv', index=False) # saving a dataframe using to_csv method
+when you return from work, remember to download reading files from coursera
