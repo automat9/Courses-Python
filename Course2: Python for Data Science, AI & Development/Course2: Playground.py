@@ -508,3 +508,4 @@ unique_dates = df['Age'].unique() # this will determine the unique elements in a
 high_above_102 = df[df['Age'] > 25] # this will filter albums released after a certain year
 df.to_csv('trading_data.csv', index=False) # saving a dataframe using to_csv method
 when you return from work, remember to download reading files from coursera
+15min
