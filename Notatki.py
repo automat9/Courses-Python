@@ -65,3 +65,24 @@ print("outside of try and except block") # after the except block, the program c
 # Can combine multiple DataFrames using methods like merge and join (similar to SQL), to create more complex datasets
 # Excellent indexing makes accessing specific rows of data very quick
 # Custom data structures means you're not limited to tables and series
+# SERIES attributes and methods to help you manipulate and analyse data using pandas:
+  # values: Returns the Series data as a NumPy array.
+  # index: Returns the index (labels) of the Series.
+  # shape: Returns a tuple representing the dimensions of the Series.
+  # size: Returns the number of elements in the Series.
+  # mean(), sum(), min(), max(): Calculate summary statistics of the data.
+  # unique(), nunique(): Get unique values or the number of unique values.
+  # sort_values(), sort_index(): Sort the Series by values or index labels.
+  # isnull(), notnull(): Check for missing (NaN) or non-missing values.
+  # apply(): Apply a custom function to each element of the Series.
+# DataFrame attributes and methods:
+  # shape: Returns the dimensions (number of rows and columns) of the DataFrame.
+  # info(): Provides a summary of the DataFrame, including data types and non-null counts.
+  # describe(): Generates summary statistics for numerical columns.
+  # head(), tail(): Displays the first or last n rows of the DataFrame.
+  # mean(), sum(), min(), max(): Calculate summary statistics for columns.
+  # sort_values(): Sort the DataFrame by one or more columns.
+  # groupby(): Group data based on specific columns for aggregation.
+  # fillna(), drop(), rename(): Handle missing values, drop columns, or rename columns.
+  # apply(): Apply a function to each element, row, or column of the DataFrame.
+# of course there are more
