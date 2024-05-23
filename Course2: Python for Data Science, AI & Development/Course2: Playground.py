@@ -528,4 +528,36 @@ x = df['ID']
 x
 # And to check the type of x type:
 type(x)
-start from loc and iloc()
+# loc() - label-based data selecting method, we need to pass the name or column that we want to select
+loc[2,'ID']
+# iloc() indexed-based selecting method, we need to pass an integer in the method to select specific row or column
+iloc[2,3] # first row x then column y
+# printing first five rows of the dataframe
+df.head()
+# Slicing the dataframe (accessing a small portion of it)
+df.loc[0:2, "Name":"Department"]
+# Changing existing indices from numbers to characters using a list
+new_index=['a','b','c','d','e','f','g','h']
+df_new=df
+df_new.index=new_index
+df_new # this will print same list different indices
+# Accessing things using these new indices
+df_new.loc['a', 'Department']
+df_new.loc['a':'d', 'Salary']
+#------------------------------------------------------------------------------------------------------------
+# NumPy
+import numpy as np # numpy is usually imported under the np alias
+a = np.array([0,1,2,3,4,5,6])
+a # creating a numpy array
+a[4] # accessing 5th element via a square bracket (first being 0)
+a[4] = 100 # changing the 5th element to 100, if you type c, you'll get an updated array
+a[3:5] = 233, 653 # changing the fourth and fifth elements (the 5 is not included in the output-goes up to 4)
+a[:4] # the missing first index is considered 0 in this case
+a[4:] # from fifth till the length of array
+a[1:7:2] # til element 7 skipping every other element
+# Lists can be used to select more than one specific index
+select_these = [0,3,5]
+b = a[select]
+b # indices 0,3,5 will be selected from array a
+a[select] = 0901 # assigning the specified elements to a new value (elements 0,3 and 5 from array a will turn into 0901
+continue from one dimensional numpy lab - other attributes right after assign value with list
