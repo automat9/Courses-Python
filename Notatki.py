@@ -86,3 +86,5 @@ print("outside of try and except block") # after the except block, the program c
   # fillna(), drop(), rename(): Handle missing values, drop columns, or rename columns.
   # apply(): Apply a function to each element, row, or column of the DataFrame.
 # of course there are more
+# NumPy is a library used for working with arrays, linear algebra, fourier transform, and matrices. 
+# It's usually imported under np alias = import numpy as np, NUMPY ARRAYS MUST CONTAIN ELEMENTS OF THE SAME TYPE
