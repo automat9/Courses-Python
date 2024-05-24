@@ -560,4 +560,67 @@ select_these = [0,3,5]
 b = a[select]
 b # indices 0,3,5 will be selected from array a
 a[select] = 0901 # assigning the specified elements to a new value (elements 0,3 and 5 from array a will turn into 0901
-continue from one dimensional numpy lab - other attributes right after assign value with list
+a.size # gives the number of elements in the array
+a.ndim # this represents the number of array dimensions, or the rank of array (will make more sence once we get to higher dimensions)
+a.shape # tuple of integers indicating the size of the array in each dimension
+# Statistical NumPy (how exciting)
+mean = a.mean()
+mean # you'll never believe what this does
+a.std() # standard deviation
+a.max() a.min() # biggest/smallest values
+# arithmetic with 2 arrays
+x = np.array([1,2,3])
+y = np.array([4,5,6])
+za = np.add(x,y) # result will be array([5,7,9)]
+zb = np.subtract(x,y) # remember, using print(zb) will instead generate [], not array([])
+zc = np.multiply(x,y)
+zd = np.divide(x,y)
+ze = np.dot(x,y) # not sure what this is tbh, google says it means applying one vector to another, the product is how much stronger we've made the original vector
+# ok so basically ^^^ stuff does this:
+# we know that x = [1,2,3] where 1 = x[0], 2 = x[1] and 3 = x[2], same with y, y[0] = 4, y[1] = 5 etc
+# dot does = [(x[0] * y[0]) + (x[1] * y[1]) * (x[2] * y[2])]
+# which gives [4 + 10 + 18] = 32
+g = np.array([7,8,9])
+g + 1 # array([8,9,10])
+np.pi # pi, the number, what did you think it would print you dumbo
+np.linspace(-2,6,num=3) # (start,stop,num = int value, this will create an array from -2 to 6 with evenly spaced intervals within that range in this case 3 intervals)
+# REMEMBER THAT THE ONLY REASON EVERY OPERATION HERE STARTS WITH np. IS BECAUSE WE IMPORTED NUMPY AS np, OTHERWISE ALL OF IT WOULD HAVE BEEN numpy.add, numpy.linspace etc)
+# creating a loop to iterate through each element
+for x in g:
+    print(x) # if we just typed print(x) without the for x in g, we would get [7,8,9]
+
+#---*Something Special*
+import time 
+import sys
+import numpy as np 
+import matplotlib.pyplot as plt
+
+def Plotvec2(a,b):
+    ax = plt.axes()# to generate the full window axes
+    ax.arrow(0, 0, *a, head_width=0.05, color ='r', head_length=0.1)#Add an arrow to the  a Axes with arrow head width 0.05, color red and arrow head length 0.1
+    plt.text(*(a + 0.1), 'a')
+    ax.arrow(0, 0, *b, head_width=0.05, color ='b', head_length=0.1)#Add an arrow to the  b Axes with arrow head width 0.05, color blue and arrow head length 0.1
+    plt.text(*(b + 0.1), 'b')
+    plt.ylim(-2, 2)#set the ylim to bottom(-2), top(2)
+    plt.xlim(-2, 2)#set the xlim to left(-2), right(2)
+# now try :)
+a = np.array([-1,1])
+b = np.array([1,1.5])
+Plotvec2(a,b)
+#---
+# Finding the even and odd numbers from arr1 and arr2
+arr1 = np.array([1, 2, 3, 4, 5])
+arr2 = np.array([6, 7, 8, 9, 10])
+#Starting index in slice is 1 as first even element(2) in array1 is at index 1
+even_arr1 = arr1[1:5:2]
+print("even for array1",even_arr1)
+#Starting index in slice is 0 as first odd element(1) in array1 is at index 0
+odd_arr1=arr1[0:5:2]
+print("odd for array1",odd_arr1)
+#Starting index in slice is 0 as first even element(6) in array2 is at index 0
+even_arr2 = arr2[0:5:2]
+print("even for array2",even_arr2)
+#Starting index in slice is 1 as first odd element(7) in array2 is at index 1
+odd_arr2=arr2[1:5:2]
+print("odd for array2",odd_arr2)
+#---
