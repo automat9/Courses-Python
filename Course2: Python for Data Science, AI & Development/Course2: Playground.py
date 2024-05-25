@@ -579,7 +579,7 @@ ze = np.dot(x,y) # not sure what this is tbh, google says it means applying one 
 # ok so basically ^^^ stuff does this:
 # we know that x = [1,2,3] where 1 = x[0], 2 = x[1] and 3 = x[2], same with y, y[0] = 4, y[1] = 5 etc
 # dot does = [(x[0] * y[0]) + (x[1] * y[1]) * (x[2] * y[2])]
-# which gives [4 + 10 + 18] = 32
+# which gives [4 + 10 + 18] = 32 - THIS IS CALLED MATRIX MULTIPLICATION
 g = np.array([7,8,9])
 g + 1 # array([8,9,10])
 np.pi # pi, the number, what did you think it would print you dumbo
@@ -624,3 +624,12 @@ print("even for array2",even_arr2)
 odd_arr2=arr2[1:5:2]
 print("odd for array2",odd_arr2)
 #---
+#------------------------------------------------------------------------------------------------------------
+# 2D NumPy
+# A = array([[11, 12, 13],
+#           [21, 22, 23],
+#           [31, 32, 33]]) 
+# If you want to find out what's on the second row and third column, type A[1,2] - first which row (first being 0), then which column
+# You can also do A[1][2] instead for the same result
+# But if you want to obtain a range, do e.g. A[1][1:2] - meaning elements from second row, second to third elements
+# If you want A[0:2,2], you,ll get first to second rows (yes, second, not third, even tho A[2] is third row), third column elements
