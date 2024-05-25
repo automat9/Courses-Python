@@ -89,3 +89,7 @@ print("outside of try and except block") # after the except block, the program c
 # of course there are more
 # NumPy is a library used for working with arrays, linear algebra, fourier transform, and matrices. 
 # It's usually imported under np alias = import numpy as np, NUMPY ARRAYS MUST CONTAIN ELEMENTS OF THE SAME TYPE
+# APIs, or Application Programming Interfaces allow developers to create new applications by leveraging existing functionality from other systems
+# Important because allow to access data and functionality from other systems, which can save time and resources because we don't have to write new code from skratch
+# MORE INFO IN READINGS FOR COURSE 2
+# 
