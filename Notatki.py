@@ -90,6 +90,10 @@ print("outside of try and except block") # after the except block, the program c
 # NumPy is a library used for working with arrays, linear algebra, fourier transform, and matrices. 
 # It's usually imported under np alias = import numpy as np, NUMPY ARRAYS MUST CONTAIN ELEMENTS OF THE SAME TYPE
 # APIs, or Application Programming Interfaces allow developers to create new applications by leveraging existing functionality from other systems
+# In other words, it allows 2 pieces of software talk to each other, you provide an input, API translates it into something that the other software component can understand, and then the API collects an output from the software component and hands it over to you in an understandable form
 # Important because allow to access data and functionality from other systems, which can save time and resources because we don't have to write new code from skratch
+# Example of an API is Pandas, it's a set of sotware components, much of which is not even written in python!
 # MORE INFO IN READINGS FOR COURSE 2
-# 
+# REST APIs allow you to access resources through the internet RE - representational S - state T- transfer
+# REST APIs send requests, which are then communicated via HTTP messages. The messages contain JSON files that contain instructions for what operations we would like the service to perform
+
