@@ -634,4 +634,38 @@ print("odd for array2",odd_arr2)
 # But if you want to obtain a range, do e.g. A[1][1:2] - meaning elements from second row, second to third elements
 # If you want A[0:2,2], you,ll get first to second rows (yes, second, not third, even tho A[2] is third row), third column elements
 #------------------------------------------------------------------------------------------------------------
-# API
+# API - see projects
+#------------------------------------------------------------------------------------------------------------
+# REST APIs & HTTP Requests
+import requests # a library that allows you to send HTTP/1.1 requests easily
+
+# some other libraries that will be needed for os to work
+import os 
+from PIL import Image
+from IPython.display import IFrame
+
+url = "https://www.youtube.com/"
+r = requests.get(url) # this is a get method that will retreive data from the server
+r.status_code # 200 stands for OK
+print(r.request.headers) # headers of the request, duh
+print(r.request.body) # None, as there is no body for a get request
+
+header = r.headers
+print(r.headers) # this will allow you to view the HTTP response header, it will return a python ditionary of HTTP response headers
+heaer["date"] # obtains the date the request was sent 
+header["Content-Type"] # indicates the type of data
+r.encoding # checks the encoding
+r.text[0:100] # as Contant-Type is text/html, we can use the text attribute to display the HTML in the body, here we have first 100 characters
+
+# now onto images
+url='https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-PY0101EN-SkillsNetwork/IDSNlogo.png'
+r=request.get(url) # get request
+print(r.headers)
+r.headers['Content-Type'] # surprise surprise - image/png
+# now since images are response objects that contain the images as bytes-like object, we must save them using a file object, so let's first specify the file path and name:
+path=os.path.join(os.getcwd(),'image.png')
+# we save the file, in order to access the body of the response we use the attribute content then save it using the open function and write method:
+with open(path,'wb') as f:
+    f.write(r.content)
+Image.open(path) # now we can view the image
+GET REQUEST WITH URL PARAMETERS
