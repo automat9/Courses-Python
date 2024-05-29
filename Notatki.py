@@ -96,4 +96,11 @@ print("outside of try and except block") # after the except block, the program c
 # MORE INFO IN READINGS FOR COURSE 2
 # REST APIs allow you to access resources through the internet RE - representational S - state T- transfer
 # REST APIs send requests, which are then communicated via HTTP messages. The messages contain JSON files that contain instructions for what operations we would like the service to perform
-
+# When you use a webpage, your browser sends an HTTP request to the server where the page is hosted. The server tries to find the desired resource, by defailt "index.html", if request successful = server sends the object to the client in an HTTP response
+# That process can be broken into Request and Response. When an HTTP request is made, and HTTP method is sent, this tells the server what actions to perform
+# Examples: Get (retrieves data from the server), Post (submits data to server), Put (updates data already on server), Delete (deletes data from server)
+# URL = Uniform Resource Locator is the most popular way to find resources on the web
+# 3 parts:
+# Scheme: the protocol (usually http://)
+# Internet address or Base URL: e.g. www.githubcom
+# Route: location on the web server, e.g. /images/IDSNlogo.png 
