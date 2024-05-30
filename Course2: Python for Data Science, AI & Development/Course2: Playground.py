@@ -668,4 +668,102 @@ path=os.path.join(os.getcwd(),'image.png')
 with open(path,'wb') as f:
     f.write(r.content)
 Image.open(path) # now we can view the image
-GET REQUEST WITH URL PARAMETERS
+#------------------------------------------------------------------------------------------------------------
+# API examples -again, API is a piece of software that acts as an intermediary that allows 2 applications to talk to each other
+# RandomUser - generates random users to be used as placeholders
+!pip install randomuser
+from randomuser import RandomUser
+import pandas as pd
+r = RandomUser() # creating a random user object, r
+some_list = r.generate_users(5)
+some_list # dayumm here you have a list of 5 randomly generated users
+name = r.get_full_name() # now we want to give those 5 random users names and emails
+for user in some_list:
+    print(user.get_full_name(), " ", user.get_email()) # using a for loop to give names to the 5 random users
+for user in some_list:
+    print(user.get_picture()) # omg it can also generate pictures
+# more comands for your convenience :)
+get_cell()
+get_city()
+get_dob()
+get_email()
+get_first_name()
+get_full_name()
+get_gender()
+get_id()
+get_id_number()
+get_id_type()
+get_info()
+get_last_name()
+get_login_md5()
+get_login_salt()
+get_login_sha1()
+get_login_sha256()
+get_nat()
+get_password()
+get_phone()
+get_picture()
+get_postcode()
+get_registered()
+get_state()
+get_street()
+get_username()
+get_zipcode()
+def get_users(): # generating a table with information about the users
+    users = []
+    for user in RandomUser.generate_users(10):
+        users.append({"Name":user.get_full_name(),"Gender":user.get_gender(),"City":user.get_city(),"State":user.get_state(),"Email":user.get_email(), "DOB":user.get_dob(),"Picture":user.get_picture()})
+    return pd.DataFrame(users)  
+
+# Fruityvice - provides data for all kinds of fruit
+import requests # using requests (accessing web info) to generate answers
+import json
+# we obtain the fruityvice API data using requests.get("url"), result is in a json format
+data = requests.get("https://fruityvice.com/api/fruit/all")
+results = json.loads(data.text) # retreiving results
+pd.DataFrame(results) # converting the json data into pandas data frame
+# the result is in a nested json format, the nutrition column contains multiple subcolumns, so let's normalise it:
+df2 = pd.json_normalize(results)
+df2 # voila
+cherry = df2.loc[df2["name"] == 'Cherry'] # extracting specific info
+(cherry.iloc[0]['family']) , (cherry.iloc[0]['genus'])
+
+# Official Joke API
+x = requests.get("https://official-joke-api.appspot.com/jokes/ten") # loading the data from the URL
+result = json.loads(x.text) # retreiving results
+result 
+result_no_Type_or_ID = pd.DataFrame(result) # converting json data into pandas data frame
+result_no_Type_or_ID.drop(columns=["type", "id"],inplace=True) # dropping type and id columns because we don't need em
+result_no_Type_or_ID
+#------------------------------------------------------------------------------------------------------------
+# Web Scraping
+# Beautiful Soup is a python library used for pulling data out of HTML and XML files, this is accomplished by representing the HTML as a set of objects with methods used to parse the HTML
+!pip install html5lib # first let's download a few modules
+!pip install bs4
+from bs4 import BeautifulSoup # this module helps in web scrapping.
+import requests  # this module helps us to download a web page
+#---Our example HTML---
+%%html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+<h3><b id='boldest'>Lebron James</b></h3>
+<p> Salary: $ 92,000,000 </p>
+<h3> Stephen Curry</h3>
+<p> Salary: $85,000, 000 </p>
+<h3> Kevin Durant </h3>
+<p> Salary: $73,200, 000</p>
+</body>
+</html>
+# store it in a variable
+html = "<!DOCTYPE html><html><head><title>Page Title</title></head><body><h3> \
+<b id='boldest'>Lebron James</b></h3><p> Salary: $ 92,000,000 </p> \
+<h3>Stephen Curry</h3><p> Salary: $85,000,000</p> \
+<h3>Kevin Durant</h3><p> Salary: $73,200,000</p></body></html>"
+soup = BeautifulSoup(html, 'html5lib') # parsing the document by passing it into the BeautifulSoup constructor, this soup constructor represents the document as a nested data structure
+print(soup.prettify()) # displaying the HTML in the nested structure
+# Basically Beautiful Soup transforms complex HTML docs into complex trees of Python objects
+TAGS IN WEB SCRAPING LAB
