@@ -92,7 +92,8 @@ print("outside of try and except block") # after the except block, the program c
 # APIs, or Application Programming Interfaces allow developers to create new applications by leveraging existing functionality from other systems
 # In other words, it allows 2 pieces of software talk to each other, you provide an input, API translates it into something that the other software component can understand, and then the API collects an output from the software component and hands it over to you in an understandable form
 # Important because allow to access data and functionality from other systems, which can save time and resources because we don't have to write new code from skratch
-# Example of an API is Pandas, it's a set of sotware components, much of which is not even written in python!
+# Examples of APIs are RandomUser, Fruutvice and Pandas, they're a set of sotware components, much of which are not even written in python!
+# Advantages of API: automation (less human efford required), efficiency (no need to implement functionality from scratch), Disadv: Security (if poorly integrated)
 # MORE INFO IN READINGS FOR COURSE 2
 # REST APIs allow you to access resources through the internet RE - representational S - state T- transfer
 # REST APIs send requests, which are then communicated via HTTP messages. The messages contain JSON files that contain instructions for what operations we would like the service to perform
