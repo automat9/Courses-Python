@@ -766,4 +766,42 @@ html = "<!DOCTYPE html><html><head><title>Page Title</title></head><body><h3> \
 soup = BeautifulSoup(html, 'html5lib') # parsing the document by passing it into the BeautifulSoup constructor, this soup constructor represents the document as a nested data structure
 print(soup.prettify()) # displaying the HTML in the nested structure
 # Basically Beautiful Soup transforms complex HTML docs into complex trees of Python objects
-TAGS IN WEB SCRAPING LAB
+tag_object = soup.title # if we want the title of the page and the name of the top paid player:
+print("tag object:", tag_object)
+tag_child = tag_object.b
+tag_child # tag object is a tree of objects, we can navigate down the branch as follows:
+parent_tag = tag_child.parent
+parent_tag # this is identical to tag_object
+tag_object.next_sibiling # paragraph element
+# Downloading and Scraping the contents of a web page
+# we download the contents
+url = "http://www.ibm.com"
+data = requests.get(url).text # using get to download in text format and store in variable data
+soup = BeautifulSoup(data, "html5lib")  # create a soup object using the variable 'data'
+for link in soup.find_all('a', href=True):  # scraping all links, in html anchor/link is represented by the tag <a>
+    print(link.get('href'))
+for link in soup.find_all('img'):  # scraping all images Tags, in html image is represented by the tag <img>
+    print(link)
+    print(link.get('src'))
+# BEFORE PROCEEDING TO SCRAPE A WEBSITE, you need to examine the contents and the way data is organised on the website
+# I.e. check how many rows and columns there are in the table you want to scrape
+url = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DA0321EN-SkillsNetwork/labs/datasets/HTMLColorCodes.html"
+data = requests.get(url).text
+soup = BeautifulSoup(data, "html5lib")
+# find a html table in the web page
+table = soup.find('table')  # in html table is represented by the tag <table>
+# Get all rows from the table
+for row in table.find_all('tr'):  # in html table row represented by tag <tr>
+    # Get all columns in each row.
+    cols = row.find_all('td')  # in html a column is represented by tag <td>
+    color_name = cols[2].string  # store the value in column 3 as color_name
+    color_code = cols[3].text  # store the value in column 4 as color_code
+    print("{}--->{}".format(color_name, color_code))
+# YOU CAN ALSO USE PANDAS as you already know
+url = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DA0321EN-SkillsNetwork/labs/datasets/HTMLColorCodes.html"
+import pandas as pd
+tables = pd.read_html(url)
+tables # this is now a list of dataframes representing the tables from the web page in the sequence of their appearance, this url only have one table, to access it type:
+tables[0]
+#------------------------------------------------------------------------------------------------------------
+# Working with different file formats
