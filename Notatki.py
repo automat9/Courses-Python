@@ -103,5 +103,9 @@ print("outside of try and except block") # after the except block, the program c
 # URL = Uniform Resource Locator is the most popular way to find resources on the web
 # 3 parts:
 # Scheme: the protocol (usually http://)
+# Data Engineering process:
+   # Extraction - getting data from multiple sources
+   # Transformation - this is removing the data that we don't need for further analysis and converting all the data into the same format
+   # Loading - loading the data inside a data warehouse, which contains large volumes of data that are accessed to gather insights
 # Internet address or Base URL: e.g. www.githubcom
 # Route: location on the web server, e.g. /images/IDSNlogo.png 
