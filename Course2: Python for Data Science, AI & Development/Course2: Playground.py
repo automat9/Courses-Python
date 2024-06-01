@@ -806,4 +806,87 @@ tables[0]
 #------------------------------------------------------------------------------------------------------------
 # Working with different file formats
 # File format is a standard way in which information is encoded for storage in a file.
-20min
+#-----------------------------------------------------
+# Comma-separated values (CSV) file format - a spreadsheet file format - data stored in cells - each line represents a record
+# Pandas Library can be used to read various datasets into a Pandas data frame
+# let's import a few libraries
+import piplite
+await piplite.install(['seaborn', 'lxml', 'openpyxl'])
+
+import pandas as pd
+from pyodide.http import pyfetch
+
+filename = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-PY0101EN-SkillsNetwork/labs/Module%205/data/addresses.csv"
+async def download(url, filename):
+    response = await pyfetch(url)
+    if response.status == 200:
+        with open(filename, "wb") as f:
+            f.write(await response.bytes())
+await download(filename, "addresses.csv")
+
+df = pd.read_csv("addresses.csv", header=None)
+df
+# pd.read+csv(your file path in commas, either a URL or address on your local device)
+df.columns =['First Name', 'Last Name', 'Location ', 'City','State','Area Code'] # THIS IS HOW YOU ADD COLUMN NAMES
+df # voila
+df["First Name"] # this will give a series, if you want it in a dataframe format (more neat) do df[["First Name]] :)
+
+df_reduced = df[['First Name', 'Location ', 'City','State',]]
+df_reduced # selecting multiple rows and assigning them to a variable
+df.loc[[0]] # selecting a specific row, loc uses name of the row or column that we want to select
+df.loc[[0,1,2], "First Name"] # selecting first 3 rows of first name column only
+df.iloc[[0,1,2], 0] # this is iloc, same result as the one above, iloc uses integer index in the method instead of strings
+#--- Transform Functions in Pandas
+import pandas as pd
+import numpy as np
+# create a dataframe
+df=pd.DataFrame(np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), columns=['a', 'b', 'c'])
+df # ok so we now have a table
+df = df.transform(func = lambda x : x + 10)
+df # boom we just applied a transform function that adds 10 to each element in the dataframe :D
+result = df.transform(func = ['sqrt'])
+result # you'll never believe what this does, it finds the square root to each element of the dataframe :DD
+#-----------------------------------------------------
+# JSON file format (JavaScript Object Notation) is a lightweight data-interchange format, easy for humans to read and write
+# built on two structures: 
+# collection of name/value pairs - object, record, dictionary, keyed list, associative array
+# an ordered list of values - array, vector, list or sequence
+import json # importing the built in package
+# writing JSON to a file
+person = {
+    'first_name' : 'Mark',
+    'last_name' : 'abc',
+    'age' : 27,
+    'address': {
+        "streetAddress": "21 2nd Street",
+        "city": "New York",
+        "state": "NY",
+        "postalCode": "10021-3100"
+    }
+}
+# writing JSON to a file is called serialisation, it's the process of converting an object into a special format which is suitable for transmitting over the network or storing in file or database
+# 2 possible ways of doing this: json.dump() - syntax: json.dump(dictionary, file_pointer)
+   # dictionary - name of the dictionary which should be converted to JSON object
+   # file pointer - pointer of the file opened in write or append mode:
+with open('person.json', 'w') as f:  # writing JSON object
+    json.dump(person, f)
+# or json.dumps(), dictionary and indent - defines the number of units for indentation 
+json_object = json.dumps(person, indent = 4) 
+# Writing to sample.json 
+with open("sample.json", "w") as outfile: 
+    outfile.write(json_object) 
+print(json_object)
+# To deserialise it back to the Python object, we use the json.load() function - only one parameter - file pointer eg:
+import json 
+  
+# Opening JSON file 
+with open('sample.json', 'r') as openfile: 
+  
+    # Reading from json file 
+    json_object = json.load(openfile) 
+  
+print(json_object) 
+print(type(json_object)) 
+#-----------------------------------------------------
+# XLSX format - Microsoft Excel Open XML file format - data organised under cells and columns in a sheet
+19min
