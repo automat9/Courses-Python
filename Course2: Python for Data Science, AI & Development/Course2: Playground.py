@@ -889,4 +889,101 @@ print(json_object)
 print(type(json_object)) 
 #-----------------------------------------------------
 # XLSX format - Microsoft Excel Open XML file format - data organised under cells and columns in a sheet
-19min
+import pandas as pd # example
+import urllib.request
+urllib.request.urlretrieve("https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-PY0101EN-SkillsNetwork/labs/Module%205/data/file_example_XLSX_10.xlsx", "sample.xlsx")
+filename = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-PY0101EN-SkillsNetwork/labs/Module%205/data/file_example_XLSX_10.xlsx"
+async def download(url, filename):
+    response = await pyfetch(url)
+    if response.status == 200:
+        with open(filename, "wb") as f:
+            f.write(await response.bytes())
+
+await download(filename, "file_example_XLSX_10.xlsx")
+
+df = pd.read_excel("file_example_XLSX_10.xlsx")
+df 
+#-----------------------------------------------------
+# XML format - Extensible Markup Language - markup language, has certain rules for encoding data, is in a human and machine readable file format
+# Pandas doesn't include any methods to read or write XML files, instead we have to use other modules to read these files and load them into a pandas dataframe
+   # Writing with xml.etree.ElementTree - this module comes with Python, allows for parsing and creating XML documents.
+   # ElementTree represents the XML as a tre, we can move across the document using nodes, which are elements of the XML file
+import xml.etree.ElementTree as ET
+
+# create the file structure
+employee = ET.Element('employee')
+details = ET.SubElement(employee, 'details')
+first = ET.SubElement(details, 'firstname')
+second = ET.SubElement(details, 'lastname')
+third = ET.SubElement(details, 'age')
+first.text = 'Shiv'
+second.text = 'Mishra'
+third.text = '23'
+
+# create a new XML file with the results
+mydata1 = ET.ElementTree(employee)
+# myfile = open("items2.xml", "wb")
+# myfile.write(mydata)
+with open("new_sample.xml", "wb") as files:
+    mydata1.write(files)
+   # Reading with xml.etree.ElementTree - example of how to read XML data and put it in a Pandas DataFrame
+!wget https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-PY0101EN-SkillsNetwork/labs/Module%205/data/Sample-employee-XML-file.xml
+
+import xml.etree.ElementTree as etree
+
+filename = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-PY0101EN-SkillsNetwork/labs/Module%205/data/Sample-employee-XML-file.xml"
+
+async def download(url, filename):
+    response = await pyfetch(url)
+    if response.status == 200:
+        with open(filename, "wb") as f:
+            f.write(await response.bytes())
+
+await download(filename, "Sample-employee-XML-file.xml")
+# You would need to firstly parse an XML file and create a list of columns for data frame, 
+# then extract useful information from the XML file and add to a pandas data frame.
+# Here is a sample code that you can use:
+tree = etree.parse("Sample-employee-XML-file.xml")
+
+root = tree.getroot()
+columns = ["firstname", "lastname", "title", "division", "building","room"]
+
+datatframe = pd.DataFrame(columns = columns)
+
+for node in root: 
+
+    firstname = node.find("firstname").text
+    lastname = node.find("lastname").text 
+    title = node.find("title").text 
+    division = node.find("division").text    
+    building = node.find("building").text
+    room = node.find("room").text
+    datatframe = pd.concat([datatframe, pd.Series([firstname, lastname, title, division, building, room], index = columns)], ignore_index = True)
+#-----------------------------------------------------
+# Save Data - using Pandas, it's possible to save a dataset to csv by using dataframe.to_csv() with file path in quoatations in the parentheses
+datatframe.to_csv("employee.csv", index=False) # example
+# can also do pd.read_csv() for reading, df.to_csv() for saving
+# you can replace "csv" with "json", "excel", "hdf" or "sql" for corresponding actions
+#-----------------------------------------------------
+# Binary File Format - non readable for people, machine only zeros and ones, binary files can range from jpeg, gif, to mp3s or word or pdf
+# For reading the image file (interesting :O)
+# PIL is the Python Imaging Library that provides the python interpreter with image editing capabilities:
+# importing PIL 
+from PIL import Image 
+
+# Uncomment if running locally
+# import urllib.request
+# urllib.request.urlretrieve("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg", "dog.jpg")
+filename = "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg"
+async def download(url, filename):
+    response = await pyfetch(url)
+    if response.status == 200:
+        with open(filename, "wb") as f:
+            f.write(await response.bytes())
+await download(filename, "./dog.jpg")
+# Read image 
+img = Image.open('./dog.jpg','r') 
+# Output Images 
+img.show()
+#-----------------------------------------------------
+# Data Analysis
