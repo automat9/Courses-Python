@@ -986,4 +986,53 @@ img = Image.open('./dog.jpg','r')
 # Output Images 
 img.show()
 #-----------------------------------------------------
-# Data Analysis
+# Data Analysis - more how to approach data acquisition and how to obtain necessary insights from a dataset using Diabetes Dataset
+# Objective of the dataset - to predict whether or not a patient has diabetes, based on certain diagnostic measurements included in the dataset
+import pandas as pd
+filename = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-PY0101EN-SkillsNetwork/labs/Module%205/data/diabetes.csv"
+
+async def download(url, filename):
+    response = await pyfetch(url)
+    if response.status == 200:
+        with open(filename, "wb") as f:
+            f.write(await response.bytes())
+
+await download(filename, "diabetes.csv")
+df = pd.read_csv("diabetes.csv") # all of the above is a prerequisite 
+
+# show the first 5 rows using dataframe.head() method
+print("The first and the last 5 rows of the dataframe") 
+df.head(5) # the og method uses dataframe.head(n) where n is the top n rows 
+df.tail(5)
+
+df.shape # tells us the dimensions of the dataframe, e.g. how many rows and how many columns we have (in this particular order)
+df.info() # tells us info about the dataframe, including the index dtype and columns, non-null values, and memory usage
+df.describe() # A REALLY IMPORTANT THINGY, SHOWS BASIC STATISTICAL DETAILS, LIKE PERCENTILE, MEAN, SD, ETC
+
+# Identifying missing values
+# to identify if we have any missing values you can use either
+.isnull()
+.notnull()
+# the result is a boolean value that indicates whether the value is in fact missing or not, e.g:
+missing_data = df.isnull()
+missing_data.head(5) # result will be a table showing various columns with rows saying either True or False, indicating if a value is missing or not
+
+# Counting missing values in each column using a for loop
+for column in missing_data.columns.values.tolist():
+    print(column)
+    print (missing_data[column].value_counts())
+    print("") 
+
+# Check data format to ensure its correct (int, float, text or other)
+df.dtypes # to check data type
+df.astype(float) # IF YOU WANT TO CHANGE THE DATA TYPE
+
+# Visualisation
+# import these very powerful visualisation libraries, basically industry standard
+import matplotlib.pyplot as plt 
+import seaborn as sns 
+# now include some data, like labels etc
+labels= 'Not Diabetic','Diabetic'
+plt.pie(df['Outcome'].value_counts(),labels=labels,autopct='%0.02f%%')
+plt.legend()
+plt.show()
