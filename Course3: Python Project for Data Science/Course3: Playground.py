@@ -24,4 +24,16 @@ apple_share_price_data = apple.history(period="max")
 
 apple_share.price_data.head()
 # data is returned in a Pandas Dataframe. With the Date as the index, the columns are: open, high, low, close, volume and stock splits for each day
-20min
+
+apple_share_price_data.reset_index(inplace=True)
+apple_share_price_data.head()
+# this will reset the index, inplace set to true means the change will take place to the DataFrame itself
+# in other words the date column will no longer be treated as index, instead an additional column will appear on the left with the actual index list
+
+apple_share_price_data.plot(x="Date", y="Open")
+#  Plotting the Open prices againast the Date (very fun :))
+
+apple.dividends # company profits returned per share an investor owns, period defined in the "history" function
+apple.dividends.plot() # guess what, this will plot the dividends over time :O
+
+FINISH EXCERCISE
