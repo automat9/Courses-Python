@@ -24,6 +24,7 @@ apple_share_price_data = apple.history(period="max")
 
 apple_share.price_data.head()
 # data is returned in a Pandas Dataframe. With the Date as the index, the columns are: open, high, low, close, volume and stock splits for each day
+apple_share.price_data.head(2) # doesn't return a table but rather a specific row (useful :))
 
 apple_share_price_data.reset_index(inplace=True)
 apple_share_price_data.head()
