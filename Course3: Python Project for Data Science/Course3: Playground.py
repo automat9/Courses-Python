@@ -36,5 +36,3 @@ apple_share_price_data.plot(x="Date", y="Open")
 
 apple.dividends # company profits returned per share an investor owns, period defined in the "history" function
 apple.dividends.plot() # guess what, this will plot the dividends over time :O
-
-FINISH EXCERCISE
