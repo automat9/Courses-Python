@@ -85,5 +85,49 @@ soup = BeautifulSoup(data, 'html5lib')
 # b) name of the parser that you want to use to parse the content, this is optional, if left blank BeatifulSoup will use the default included in library
 
 # Step 3
-netflix_data = pd.DataFrame(columns=["Date", "Open", "High", "Low", "Close", "Volume"])
-25min
+netflix_data = pd.DataFrame(columns=["Date", "Open", "High", "Low", "Close", "Volume"]) # creating empty DataFrame
+# tags that are used while creating HTML tables:
+# <table> - root tag used to define the star and end of the table, everything is enclosed within these
+# <tr> - used to define table row, each row is defined within this tag
+# <td> - used to define a table cell
+# <th> - used to define a header cell in the table, by default bold and centred, used to describe contents of column or row
+# <tbody> - main content of table, contains one or more rows of elements
+
+# Step 4
+# First we isolate the body of the table which contains all the information
+# Then we loop through each row and find all the column values for each row
+for row in soup.find("tbody").find_all('tr'): # find returns particular tag content, find all returns a list of all matching tags in the HTML
+    col = row.find_all("td")
+    date = col[0].text
+    Open = col[1].text
+    high = col[2].text
+    low = col[3].text
+    close = col[4].text
+    adj_close = col[5].text
+    volume = col[6].text
+    
+    # Finally we append the data of each row to the table
+    netflix_data = netflix_data.append({"Date":date, "Open":Open, "High":high, "Low":low, "Close":close, "Adj Close":adj_close, "Volume":volume}, ignore_index=True)    
+
+# Step 5
+netflix_data.head() # :)
+#-------------------------------------------------------------------------------------------------------------
+# Extracting data using Pandas library
+pd.read_html(url) # read_html function is used to extract tables from HTML web pages, takes URL as input and returns a list of all the tables found on the page
+
+read_html_pandas_data = pd.read_html(str(soup)) # you can convert the BeautifulSoup object to a string
+
+netflix_dataframe = read_html_pandas_data[0] # only one table on the page so just find [0]
+
+netflix_dataframe.head()
+
+# Excercise
+# 1. Using requests, dowlonad the webpage: https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-PY0220EN-SkillsNetwork/labs/project/amazon_data_webpage.html.
+#    save the text of the response as a variabe named html_data
+# 2. Parse the html data using beautiful_soup
+# 3. Q1: What is the content of the title attribute?
+# 4. Using BS, extract the table with historical share prices and store it into a dataframe named amazon_data
+# 5. Print out the first five rows of the amazon_data dataframe
+# 6. Q2: What are the names of the columns in the dataframe?
+# 7. Q3: What is the "Open" of the last row of the amazon_data dataframe?
+FINISH THIS (important)
