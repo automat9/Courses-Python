@@ -121,13 +121,3 @@ netflix_dataframe = read_html_pandas_data[0] # only one table on the page so jus
 
 netflix_dataframe.head()
 
-# Excercise
-# 1. Using requests, dowlonad the webpage: https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-PY0220EN-SkillsNetwork/labs/project/amazon_data_webpage.html.
-#    save the text of the response as a variabe named html_data
-# 2. Parse the html data using beautiful_soup
-# 3. Q1: What is the content of the title attribute?
-# 4. Using BS, extract the table with historical share prices and store it into a dataframe named amazon_data
-# 5. Print out the first five rows of the amazon_data dataframe
-# 6. Q2: What are the names of the columns in the dataframe?
-# 7. Q3: What is the "Open" of the last row of the amazon_data dataframe?
-FINISH THIS (important)
