@@ -11,3 +11,16 @@
 # Ordinal - ordered according to some relationship to one another, e.g. number of cars owned by a household, categories can be compared with one another, usually meaningless because no fixed units of measurement, i.e. differences are meaningless
 # Ratio - data with no natural zero, e.g. sales dollars, length, weight, time from start of a process, business data, strongest form of measurement, both ratios and differences are meaningful
 # Interval - ordered and characterised by a specific measure of distance between observations, but with no natural zero, e.g. temperature, time, survey scales, ratios are meaningless (50 degrees is not twice as hot as 25 degrees), differences are meaningful, so averages can be compared
+
+# Measures of central tendency
+# ===== Terminology and Notation ===== #
+# x̄ - Sample mean
+# Σ - Operation of addition ("the sum of")
+# N - size of population
+# n - size of sample
+# ====================================
+
+# 1) use df.info() to find columns and their data types
+# 2) Mean, Median, Mode
+
+50min left, measure of central tend: 3rd min
