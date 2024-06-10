@@ -107,3 +107,27 @@ ratings_df.groupby('tenure').agg({'age':['mean', 'std']}).reset_index()
 # Relationship - e.g. bubble (3 variables, x, y axes and size being third var) or scatter (2 var)
 
 # seaborn and matplotlib will be used
+
+# ==================== Lab ============================================================================
+
+# Import libs
+
+import piplite
+await piplite.install(['numpy'])
+await piplite.install(['pandas'])
+await piplite.install(['seaborn'])
+
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt 
+
+from js import fetch
+import io
+URL = 'https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ST0151EN-SkillsNetwork/labs/teachingratings.csv'
+resp = await fetch(URL)
+ratings_url = io.BytesIO((await resp.arrayBuffer()).to_py())
+
+ratings_df = pd.read_csv(ratings_url) # read the file
+
+ratings_df.prof.unique() # FIND OUT WHAT THIS DOES, say 20 min after work
