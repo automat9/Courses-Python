@@ -26,6 +26,7 @@
 # Measures of Dispersion
 # Dispersion - degree of variation in the data (is the majority of data in one place, or is it spread out)
 # Low SD =  more consistency, majority of values close to each other, high SD means larger spread from the mean
+# e.g. 2 datasets, 1) mean 10, sd 0 = 10, 10, 10, 2) mean 10, sd 10 = 0, 10, 20
 # REMEMBER: average = partial picture, avg. statistics are incomplete without SD/var, risk metrics are ALL ABOUT VARIANCE!
 # Range - max - min = range
 # ==================== Let the fun begin :) =========================================================================================================================================================================================================================================================
@@ -59,6 +60,7 @@ ratings_df.shape # prints as (number of rows, no. of columns)
 # The dataset  is cross-sectional because - no time variable, observes multiple persons and compares them at one point in time
 
 # ==================== Measures of central tendancy (really cool stuff :)) =====================================================
+
 ratings_df.describe() # describes the whole dataset
 ratings_df['students'].describe() # you're never gonna believe which column this code describes
 
@@ -94,3 +96,14 @@ ratings_df[ratings_df['tenure'] == 'yes']['eval'].median()
 
 # To compare avg age with tenure, to produce the means and sd for both tenured and unt. professors:
 ratings_df.groupby('tenure').agg({'age':['mean', 'std']}).reset_index()
+
+
+# ==================== Visualization Fundamentals =====================================================
+
+# WHat can be visualised:
+# Distribution - e.g. scatter (if 2 var.), bell curve, histogram
+# Comparison - bar, line, circular area chart
+# Composition - e.g. pie
+# Relationship - e.g. bubble (3 variables, x, y axes and size being third var) or scatter (2 var)
+
+# seaborn and matplotlib will be used
