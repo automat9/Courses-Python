@@ -107,7 +107,7 @@ ratings_df.groupby('tenure').agg({'age':['mean', 'std']}).reset_index()
 # Relationship - e.g. bubble (3 variables, x, y axes and size being third var) or scatter (2 var)
 
 # seaborn and matplotlib will be used
-# 
+
 # ==================== Lab ============================================================================
 
 # Import libs
@@ -132,7 +132,7 @@ ratings_df = pd.read_csv(ratings_url) # read the file
 
 ratings_df.prof.unique() # not sure how to explain what this does (god I hope nobody is reading this)
 
-# ==================== Probability Distribution========================================================
+# ==================== Probability Distribution =======================================================
 
 # Probability is a measure between o and 1 of the likelihood that an event might occur (duh)
 # Random variable is a variable with an unknown value OR a function that assigns values to each of an experiment's outcomes (I knew that)
@@ -140,4 +140,8 @@ ratings_df.prof.unique() # not sure how to explain what this does (god I hope no
 # Hypotheses & Distribution: 
 # α significance level = probability of rejecting the null hyp. when the null hyp. is true
 # p-value = probability of getting a result that is as extreme or more extreme when the null hyp. is true
-# T-distribution = 19min
+# T-distribution = describes mean of samples drawn from a population (whereas normal dist describes mean for population)
+# T-test = testing for statistical significance (assumptions: continous or ordinal scale, random sample, bell-shape, homogeneity of variance - to avoid bias towards large sample sizes)
+
+# ==================== Prob. of getting a high or low value ===========================================
+
