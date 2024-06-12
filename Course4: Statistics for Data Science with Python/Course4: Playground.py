@@ -150,6 +150,7 @@ no_duplicates_ratings_df['age'].std()
 # Use a bar chart to demonstrate if instructors teaching lower-division courses receive higher avg teaching evaluations
 ratings_df.head()
 
+# Find avg teaching evaluation in both groups of upper and lower-division
 division_eval = ratings_df.groupby('division')[['eval']].mean().reset_index() # this finds the avg eval. in both groups of upper and lower div
 
 # Plotting the barplot using the seaborn library
@@ -159,13 +160,42 @@ plt.show()
 
 # ======== SCATTER DIAGRAM ==
 # to plot the relationship between age and teaching evaluations
-
 ax = sns.scatterplot(x='age', y='eval', data=ratings_df)
 plt.show()
 
-16min
+# to do the above + show difference between the two genders
+ax = sns.scatterplot(x='age', y='eval', hue='gender',
+data=ratings_df)
+plt.show()
 
+# ======== BOX PLOT =========
+# for beauty scores differentiated by credits
+ax = sns.boxplot(x='credits', y='beauty', data=ratings_df)
+plt.show()
 
+# ======== CATPLOT ========== (meow)
+# to count how many courses are taught by gender
+sns.catplot(x='gender', kind='count', data=ratings_df)
+plt.show()
+
+# creating a group histogram by adding hue = tenure
+sns.catplot(x='gender', hue = 'tenure', kind='count', data=ratings_df)
+plt.show()
+
+# Adding division as another factor to the same histogram (now we have 2 rows)
+sns.catplot(x='gender', hue = 'tenure', row = 'division',
+            kind='count', data=ratings_df,
+            height = 3, aspect = 2)
+plt.show()
+
+# ======== RELPLOT ==========
+# Complex scatter plot - creates a scatterplot of age and evaluation scores, differentiated by gender and tenure)
+sns.relplot(x="age", y="eval", hue="gender",
+            row="tenure",
+            data=ratings_df, height = 3, aspect = 2)
+plt.show()
+
+CONTINUE HERE
 # ==================== Probability Distribution =======================================================
 
 # Probability is a measure between o and 1 of the likelihood that an event might occur (duh)
