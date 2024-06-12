@@ -145,11 +145,25 @@ no_duplicates_ratings_df.head()
 no_duplicates_ratings_df['age'].mean()
 no_duplicates_ratings_df['age'].std()
 
+# ==================== Plotting data ==================================================================
+# ======== BAR CHART ========
+# Use a bar chart to demonstrate if instructors teaching lower-division courses receive higher avg teaching evaluations
+ratings_df.head()
 
+division_eval = ratings_df.groupby('division')[['eval']].mean().reset_index() # this finds the avg eval. in both groups of upper and lower div
 
+# Plotting the barplot using the seaborn library
+sns.set(style="whitegrid")
+ax = sns.barplot(x="division", y="eval", data=division_eval)
+plt.show()
 
+# ======== SCATTER DIAGRAM ==
+# to plot the relationship between age and teaching evaluations
 
+ax = sns.scatterplot(x='age', y='eval', data=ratings_df)
+plt.show()
 
+16min
 
 
 # ==================== Probability Distribution =======================================================
