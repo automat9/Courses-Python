@@ -130,7 +130,27 @@ ratings_url = io.BytesIO((await resp.arrayBuffer()).to_py())
 
 ratings_df = pd.read_csv(ratings_url) # read the file
 
-ratings_df.prof.unique() # not sure how to explain what this does (god I hope nobody is reading this)
+ratings_df.prof.unique() # identifies all duplicate cases of the prof variables, (array with 
+ratings_df.prof.nunique() # prints out the number of unique values in the prof variable
+
+# let's find avg and std for age
+ratings_df["age"].mean()
+ratings_df["age].std()
+
+# Filter the data set to include one observation for each instructor with a total number of observations restricted to 94
+no_duplicates_ratings_df = ratings_df.drop_duplicates(subset =["prof"]
+no_duplicates_ratings_df.head()
+
+# new avg and std for age
+no_duplicates_ratings_df['age'].mean()
+no_duplicates_ratings_df['age'].std()
+
+
+
+
+
+
+
 
 # ==================== Probability Distribution =======================================================
 
@@ -143,5 +163,36 @@ ratings_df.prof.unique() # not sure how to explain what this does (god I hope no
 # T-distribution = describes mean of samples drawn from a population (whereas normal dist describes mean for population)
 # T-test = testing for statistical significance (assumptions: continous or ordinal scale, random sample, bell-shape, homogeneity of variance - to avoid bias towards large sample sizes)
 
-# ==================== Prob. of getting a high or low value ===========================================
+# ==================== Lab ============================================================================
+
+# Import libraries and read the csv lab file
+import piplite
+await piplite.install(['numpy'])
+await piplite.install(['pandas'])
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import scipy.stats
+from math import sqrt
+
+from js import fetch
+import io
+
+URL = 'https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ST0151EN-SkillsNetwork/labs/teachingratings.csv'
+resp = await fetch(URL)
+ratings_url = io.BytesIO((await resp.arrayBuffer()).to_py())
+
+ratings_df = pd.read_csv(ratings_url)
+
+# ==== Creating normal distribution =========================================
+
+# Pmport norm from scipy.stats and plot using matplotlib
+from scipy.stats import norm
+
+# Plot between -4 and 4 with 0.1 steps.
+x_axis = np.arange(-4, 4, 0.1)
+# Mean = 0, SD = 1.
+plt.plot(x_axis, norm.pdf(x_axis, 0, 1))
+plt.show()
 
