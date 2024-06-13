@@ -264,7 +264,6 @@ ratings_url = io.BytesIO((await resp.arrayBuffer()).to_py())
 ratings_df = pd.read_csv(ratings_url)
 
 # ==== Creating normal distribution =========================================
-
 # Pmport norm from scipy.stats and plot using matplotlib
 from scipy.stats import norm
 
@@ -274,4 +273,45 @@ x_axis = np.arange(-4, 4, 0.1)
 plt.plot(x_axis, norm.pdf(x_axis, 0, 1))
 plt.show()
 
-33min
+# ===== Probability of receiving an evaluation score of greater than 4.5 =====
+
+# 1) find the mean and std of teachers' evaluation scores
+eval_mean = round(ratings_df['eval'].mean(), 3)
+eval_sd = round(ratings_df['eval'].std(), 3)
+print(eval_mean, eval_sd)
+
+# 2) Use scipy.stats, because Python only looks to the left (X<x) we remove the probability from 1 to get the other side of tail
+prob0 = scipy.stats.norm.cdf((4.5 - eval_mean)/eval_sd)
+print(1 - prob0)
+
+# ===== Probability of receiving an evaluation greater than 3.5 and less than 4.2 =====
+
+# 1) first find prob of getting eval score less than 3.5 using norm.cdf
+x1 = 3.5
+prob1 = scipy.stats.norm.cdf((x1 - eval_mean)/eval_sd)
+print(prob1)
+
+# 2) then for less than 4.2
+x2 = 4.2
+prob2 = scipy.stats.norm.cdf((x2 - eval_mean)/eval_sd)
+print(prob2)
+
+# 3) prob of receiving eval score between 3.5 and 4.2 is:
+round((prob2 - prob1)*100, 1)
+
+# ==== Two-tailed test from a normal distribution ===========================
+
+# pro players vs regional players
+# pros have historic mean of 12 per game and std of 5.5
+# group of 36 regional players have avg of 10.7 points per game
+# are pro scores different from the regional players?
+
+# Null = H_0 x = u_1
+# Alt = H_1 x =/ u_1
+
+# because it is a two-tailed test we multiply by 2
+2*round(scipy.stats.norm.cdf((10.7 - 12)/(5.5/sqrt(36))), 3)
+
+# concl + p-value greater than 0.05, we fail to reject null
+
+PRACTICE QUESTIONS
