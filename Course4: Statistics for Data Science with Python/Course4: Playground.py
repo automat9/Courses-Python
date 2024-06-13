@@ -173,6 +173,23 @@ plt.show()
 ax = sns.boxplot(x='credits', y='beauty', data=ratings_df)
 plt.show()
 
+# age of instructor by gender
+ax = sns.boxplot(x="gender", y="age", data=ratings_df)
+plt.show()
+
+# compare age along with tenure and gender
+ax = sns.boxplot(x="tenure", y="age", hue="gender",
+data=ratings_df)
+plt.show()
+
+# Horizontal box plot of age of instructors by visible minority (whether horizontal or vertical depends on position of argument ( which one is x and which one is y))
+ax = sns.boxplot(y="minority", x="age", data=ratings_df)
+plt.show()
+
+# Boxplot of the age variable, y axis can be changed to x depending on which one you prefer
+sns.boxplot(y="age", data=ratings_df)
+plt.show()
+
 # ======== CATPLOT ========== (meow)
 # to count how many courses are taught by gender
 sns.catplot(x='gender', kind='count', data=ratings_df)
@@ -188,6 +205,10 @@ sns.catplot(x='gender', hue = 'tenure', row = 'division',
             height = 3, aspect = 2)
 plt.show()
 
+# Grouped bar plot of tenure by minority with gender as factor
+sns.catplot(x='tenure', hue = 'minority', row = 'gender', kind='count', data=ratings_df, height = 3, aspect = 2)
+plt.show()
+
 # ======== RELPLOT ==========
 # Complex scatter plot - creates a scatterplot of age and evaluation scores, differentiated by gender and tenure)
 sns.relplot(x="age", y="eval", hue="gender",
@@ -195,7 +216,20 @@ sns.relplot(x="age", y="eval", hue="gender",
             data=ratings_df, height = 3, aspect = 2)
 plt.show()
 
-CONTINUE HERE
+# ======== DISTRIBUTION =====
+ax = sns.displot(ratings_df['eval'], kde = False) # kde creates a curve :D
+plt.show() # old versions of seaborn use distplot instead of displot
+
+# Creating 2 distribution plots of teaching evaluation score with gender as a factor
+sns.displot(ratings_df[ratings_df['gender'] == 'female']['eval'], color='green', kde=False) 
+sns.displot(ratings_df[ratings_df['gender'] == 'male']['eval'], color="orange", kde=False) 
+plt.show()
+
+# Creating 2 distribution plots of beauty scores with native eng speaker as a factor
+sns.displot(ratings_df[ratings_df["native"] == "yes"]["beauty"], color="orange")
+sns.displot(ratings_df[ratings_df["native"] == "no"]["beauty"], color="green")
+plt.show()
+
 # ==================== Probability Distribution =======================================================
 
 # Probability is a measure between o and 1 of the likelihood that an event might occur (duh)
@@ -240,3 +274,4 @@ x_axis = np.arange(-4, 4, 0.1)
 plt.plot(x_axis, norm.pdf(x_axis, 0, 1))
 plt.show()
 
+33min
