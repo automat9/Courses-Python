@@ -351,3 +351,4 @@ result is 0.009, which is smaller than the standard 5% sig level (0.05), meaning
 # concl + p-value greater than 0.05, we fail to reject null
 
 
+12min anova vid
