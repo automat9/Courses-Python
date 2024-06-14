@@ -284,6 +284,14 @@ print(eval_mean, eval_sd)
 prob0 = scipy.stats.norm.cdf((4.5 - eval_mean)/eval_sd)
 print(1 - prob0)
 
+# ===== Again =========================================================================
+
+# calculate the probability less than 3.3
+prob_less_than = scipy.stats.norm.cdf((3.3 - eval_mean)/eval_sd)
+
+# then remove the probability from 1 to get the area to the right of 3.3
+print(1 - prob_less_than)
+
 # ===== Probability of receiving an evaluation greater than 3.5 and less than 4.2 =====
 
 # 1) first find prob of getting eval score less than 3.5 using norm.cdf
@@ -298,6 +306,34 @@ print(prob2)
 
 # 3) prob of receiving eval score between 3.5 and 4.2 is:
 round((prob2 - prob1)*100, 1)
+
+# ==== Again =============================================================================
+# Probability of receiving a score between 2 and 3
+x1 = 2
+less_than_2 = scipy.stats.norm.cdf((x1 - eval_mean)/eval_sd)
+print(prob1)
+
+x2 = 3
+less_than_3 = scipy.stats.norm.cdf((x2 - eval_mean)/eval_sd)
+print(prob2)
+
+round((less_than_3 - less_than_2)*100,1)
+
+# ==== One-tailed test from a normal distribution ===========================
+# Hypothesis - sleeping for 8 hours makes one smarter, 12 people have their iq tested: 
+# H0: u = 100, Ha u>100
+
+iqs = [116,111,101,120,99,94,106,115,107,101,110,92]
+sample_size = len(iqs)
+degree_freedom = sample_size - 1
+iq_mean = sum(iqs) / sample_size
+mean_diff = [(iq - iq_mean) ** 2 for iq in iqs]
+iq_std = sqrt(sum(mean_diff) / degree_freedom)
+variance = iq_std ** 2
+
+round(1 - scipy.stats.norm.cdf((iq_mean - 100)/(iq_std/sqrt(12))), 3)
+
+result is 0.009, which is smaller than the standard 5% sig level (0.05), meaning that the null hypothesis can be rejected 
 
 # ==== Two-tailed test from a normal distribution ===========================
 
@@ -314,4 +350,4 @@ round((prob2 - prob1)*100, 1)
 
 # concl + p-value greater than 0.05, we fail to reject null
 
-PRACTICE QUESTIONS
+
