@@ -12,4 +12,4 @@
 # 1) used if dealing with more than 2 groups - comparing means of more than 2 groups
 # 2) for this, we use F-distribution to compare the mean values for more than 2 groups
 # 3) null = samples in all groups are drawn from the same populations with the same mean values
-# 4) reject null = if p-value or sig for f-test is greater than 0.05
+# 4) reject null = if p-value or sig for f-test is less than 0.05
