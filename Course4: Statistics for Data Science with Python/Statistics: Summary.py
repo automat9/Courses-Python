@@ -1,3 +1,9 @@
+# Goal of hypothesis testing: to answer the question "given a sample and an apparent effect, what is the probability of seeing such an effect by chance"
+# Step 1) Quantify the size of the apparent effect by choosing a test statistic (e.g. t-test, ANOVA, Chi-square, etc.)
+# Step 2) Define a null hypothesis (a model of the system based on the assumption that the apparent effect is not real)
+# Step 3) Compute the p-value (probability of null being true)
+# Step 4) Interpret the result of the p-value (if low, the effect is said to be statistically significant, i.e. reject null)
+
 # Z-score = (X - μ)/σ - i.e your score - population mean / standard deviation
 
 # Z-test
