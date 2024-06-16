@@ -350,5 +350,140 @@ result is 0.009, which is smaller than the standard 5% sig level (0.05), meaning
 
 # concl + p-value greater than 0.05, we fail to reject null
 
+# ==================== Hypothesis Testing =============================================================
 
-12min anova vid
+# Import libraries (the commented ones are preinstalled on Skills Network, but you have to uncomment them)
+
+#install specific version of libraries used in lab
+#! mamba install pandas==1.3.3
+#! mamba install numpy=1.21.2
+#! mamba install scipy=1.7.1-y
+#!  mamba install seaborn=0.9.0-y
+#!  mamba install matplotlib=3.4.3-y
+#!  mamba install statsmodels=0.12.0-y
+
+import piplite
+await piplite.install(['numpy'],['pandas'])
+await piplite.install(['seaborn'])
+
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+import scipy.stats
+
+from js import fetch
+import io
+
+URL = 'https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ST0151EN-SkillsNetwork/labs/teachingratings.csv'
+resp = await fetch(URL)
+ratings_url = io.BytesIO((await resp.arrayBuffer()).to_py())
+
+ratings_df = pd.read_csv(ratings_url)
+
+# ===== T-Test: Does gender affect teaching evaluations? =====
+
+# H_0 : μ_1 = μ_2 (no difference in evaluation scores between males and females)
+# H_1 : μ_1 ≠ μ_2 (difference in evaluation scores - two-tailed)
+
+# Plotting dependent variable with a histogram:
+ax = sns.distplot(ratings_df['eval'],
+                  bins=20,
+                  kde=True,
+                  color='red',
+                  hist_kws={"linewidth": 15,'alpha':1})
+ax.set(xlabel='Normal Distribution', ylabel='Frequency')
+
+# Use Levene's test to check test significance (since p-value is greater than 0.05, we can assume equality of variance)
+scipy.stats.levene(ratings_df[ratings_df['gender'] == 'female']['eval'],
+                   ratings_df[ratings_df['gender'] == 'male']['eval'], center='mean')
+
+# Actual T-test - p-value is less than 0.05 and thus we reject the null hypothesis
+scipy.stats.ttest_ind(ratings_df[ratings_df['gender'] == 'female']['eval'],
+                   ratings_df[ratings_df['gender'] == 'male']['eval'], equal_var = True)
+                   
+# ===== T-Test: Does tenure affect teaching evaluations? =====
+scipy.stats.ttest_ind(ratings_df[ratings_df['tenure'] == 'yes']['eval'],
+                   ratings_df[ratings_df['tenure'] == 'no']['eval'], equal_var = True)
+
+# ===== ANOVA: Does beauty score for instructors differ by age =====
+
+# H_0 : μ_1 = μ_2 = μ_3 (three population means are equal)
+# H_1 : At least 1 of the means differ
+
+# Test for equality of variance
+scipy.stats.levene(ratings_df[ratings_df['age_group'] == '40 years and younger']['beauty'],
+                   ratings_df[ratings_df['age_group'] == 'between 40 and 57 years']['beauty'], 
+                   ratings_df[ratings_df['age_group'] == '57 years and older']['beauty'], 
+                   center='mean')
+# since the p-value is less than 0.05, the variance are not equal, for the purposes of this exercise, we will move along
+
+# Separate the three samples (one for each job category) into a variable each
+forty_lower = ratings_df[ratings_df['age_group'] == '40 years and younger']['beauty']
+forty_fiftyseven = ratings_df[ratings_df['age_group'] == 'between 40 and 57 years']['beauty']
+fiftyseven_older = ratings_df[ratings_df['age_group'] == '57 years and older']['beauty']
+
+# Now run a one-way ANOVA
+f_statistic, p_value = scipy.stats.f_oneway(forty_lower, forty_fiftyseven, fiftyseven_older)
+print("F_Statistic: {0}, P-Value: {1}".format(f_statistic,p_value))
+# p-value is less than 0.05, thus we reject the null hypothesis in favour of the alternative hypothesis (at least one of the means differ)
+
+# ===== ANOVA: Does teaching evaluation score for instructors differ by age =====
+# Again, test for equality of variance
+scipy.stats.levene(ratings_df[ratings_df['age_group'] == '40 years and younger']['eval'],
+                   ratings_df[ratings_df['age_group'] == 'between 40 and 57 years']['eval'], 
+                   ratings_df[ratings_df['age_group'] == '57 years and older']['eval'], 
+                   center='mean')
+# p-value = 0.02, so lower than 0.05
+
+# Assigning variables
+forty_lower_eval = ratings_df[ratings_df['age_group'] == '40 years and younger']['eval']
+forty_fiftyseven_eval = ratings_df[ratings_df['age_group'] == 'between 40 and 57 years']['eval']
+fiftyseven_older_eval = ratings_df[ratings_df['age_group'] == '57 years and older']['eval']
+
+# One way ANOVA
+f_statistic, p_value = scipy.stats.f_oneway(forty_lower_eval, forty_fiftyseven_eval, fiftyseven_older_eval)
+print("F_Statistic: {0}, P-Value: {1}".format(f_statistic,p_value))
+# p-value = 0.2954, so we fail to reject the null hypothesis
+
+# ===== Chi-square: Is there an association between tenure and gender =====
+ # H_0: The proportion of teachers who are tenured is independent of gender
+ # H_1: The proportion of teachers who are tenured is associated with gender
+
+# Create a cross-tab table
+cont_table  = pd.crosstab(ratings_df['tenure'], ratings_df['gender'])
+cont_table
+
+# Use the scipy.stats library and set correction equals False as that will be the same answer when done by hand, 
+# it returns: 𝜒2 value, p-value, degree of freedom, and expected value
+# Actual test below
+scipy.stats.chi2_contingency(cont_table, correction = False)
+
+# p-value greater than 0.05, we fail to reject null, no sufficient evidence that teachers are tenured as a result of gender
+
+# ===== Chi-square: Is there an association between age and tenure =====
+# Test
+cont_table  = pd.crosstab(ratings_df['tenure'], ratings_df['age_group'])
+scipy.stats.chi2_contingency(cont_table)
+
+# ===== Chi-square: Is there an association between visible minorities and tenure =====
+# Test
+cont_table  = pd.crosstab(ratings_df['tenure'], ratings_df['vismin'])
+scipy.stats.chi2_contingency(cont_table)
+
+# ===== Correlation: Is teaching evaluation score correlated with beauty score =====
+ # H_0: Teaching evaluation score is not correlated with beauty score
+ # H_1: Teaching evaluation score is correlated with beauty score
+
+# Both are continous variables, we can use a pearson correlation test and draw a scatter plot
+ax = sns.scatterplot(x="beauty", y="eval", data=ratings_df)
+
+# Actual test:
+scipy.stats.pearsonr(ratings_df['beauty'], ratings_df['eval'])
+# p is less than 0.05, we reject null and conclude that there is a relationship between beauty and teaching evaluation score
+
+# ======================= BONUS LEVENE TEST ===========================
+# equality of variance for beauty scores between tenured and non-tenured instructors
+scipy.stats.levene(ratings_df[ratings_df['tenure'] == 'yes']['beauty'],
+                   ratings_df[ratings_df['tenure'] == 'no']['beauty'], 
+                   center='mean')
