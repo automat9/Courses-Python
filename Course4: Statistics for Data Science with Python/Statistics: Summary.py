@@ -30,13 +30,28 @@
 
 
 # Chi-square test for Association (association is the key word, if you hear it, it's chi square)
-# e.g. testing for relationships between categorical variables
+# e.g. testing for relationships between categorical variables - correlation
 # 1) null: no association between x and y
+
+# Pearson correlation test (also correlation)
+# Use for continous variables, like age, beauty score, evaluation score etc
 
 # Levene's test for equality of variance
 # e.g. important in T-test or ANOVA as it tests the assumption of homogeneity of variance
 # If less than 0.05 then the two variances are significantly different
 # If more than 0.05 then the two variances are statistically equal
 
-# Pearson correlation test
-# Use for continous variables, like age, beauty score, evaluation score etc
+
+# Regression: the ultimate tool for hypothesis testing, can arguably replace t-test, ANOVS or pearson correlation test
+# 1) we need a question: e.g. does x decrease with y, do x people get paid more than y people, association between x and y?
+# 2) identify dependent (one that we're interested in) and explanatory (those that influence the dependent) variables
+# 3) x = explanatory, y = dependent
+
+# Regression in place of a t-test:
+# 1) is there a statistically significant difference in teaching evaluation scores for men and women?
+# 2) create a list for independent variable (female) and dependent variable (score)
+# 3) run model and interpret results, looking at t value and P>¦t¦, if less than 0.05 then reject null
+
+# Regression in place of ANOVA:
+# 1) does beauty score for instructors differ by age?
+# 2) ANOVA requires to cetegorise age into age ranges and find mean and std for each, but regression can be continous
