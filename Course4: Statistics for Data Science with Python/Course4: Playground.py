@@ -97,7 +97,6 @@ ratings_df[ratings_df['tenure'] == 'yes']['eval'].median()
 # To compare avg age with tenure, to produce the means and sd for both tenured and unt. professors:
 ratings_df.groupby('tenure').agg({'age':['mean', 'std']}).reset_index()
 
-
 # ==================== Visualization Fundamentals =====================================================
 
 # WHat can be visualised:
@@ -487,3 +486,143 @@ scipy.stats.pearsonr(ratings_df['beauty'], ratings_df['eval'])
 scipy.stats.levene(ratings_df[ratings_df['tenure'] == 'yes']['beauty'],
                    ratings_df[ratings_df['tenure'] == 'no']['beauty'], 
                    center='mean')
+
+
+# ==================== Regression Analysis ============================================================
+# Import libraries (again)
+
+# commented are already installed on skills network
+#! mamba install pandas==1.3.3
+#! mamba install numpy=1.21.2
+#! mamba install scipy=1.7.1-y
+#!  mamba install seaborn=0.9.0-y
+#!  mamba install matplotlib=3.4.3-y
+#!  mamba install statsmodels=0.12.0-y
+
+import piplite
+await piplite.install(['numpy'],['pandas'])
+
+import numpy as np
+import pandas as pd
+import statsmodels.api as sm
+
+from js import fetch
+import io
+
+URL = 'https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ST0151EN-SkillsNetwork/labs/teachingratings.csv'
+resp = await fetch(URL)
+ratings_url = io.BytesIO((await resp.arrayBuffer()).to_py())
+
+ratings_df = pd.read_csv(ratings_url)
+
+
+# Regression with t-test:
+# Question: Using the teachers rating data set, does gender affect teaching evaluation rates?
+# Hypothesis: 
+# H_0: β1 = 0 (Gender has no effect on teaching evaluation scores)
+# H_1: β1 ≠ 0 (Gender has an effect on teaching evaluation scores)
+-------
+## X is the input variables (or independent variables)
+X = ratings_df['female']
+## y is the target/dependent variable
+y = ratings_df['eval']
+## add an intercept (beta_0) to our model
+X = sm.add_constant(X) 
+
+model = sm.OLS(y, X).fit()
+predictions = model.predict(X)
+
+# Print out the statistics
+model.summary()
+-------
+# Conclusion: Like the t-test, the p-value is less than the alpha (α) level = 0.05,
+so we reject the null hypothesis as there is evidence that there is a difference in mean evaluation scores based on gender.
+The coefficient -0.1680 means that females get 0.168 scores less than men.
+
+
+# Regression with ANOVA:
+# Questions: does beauty score for instructors differ by age? 
+# Hypothesis: 
+# H_0 : μ_1 = μ_2 = μ_3 (three population means are equal)
+# H_1 : At least 1 of the means differ
+-------
+# Group data like with did with ANOVA
+ratings_df.loc[(ratings_df['age'] <= 40), 'age_group'] = '40 years and younger'
+ratings_df.loc[(ratings_df['age'] > 40)&(ratings_df['age'] < 57), 'age_group'] = 'between 40 and 57 years'
+ratings_df.loc[(ratings_df['age'] >= 57), 'age_group'] = '57 years and older'
+
+# Perform regression:
+from statsmodels.formula.api import ols
+lm = ols('beauty ~ age_group', data = ratings_df).fit()
+table= sm.stats.anova_lm(lm)
+print(table)
+--------
+# Conclusion: same value for anova like before - PR(>F), so we reject null
+
+# OPTION 2:
+# Create dummy variables (numeric variables that represent categorical data, such as gender, race etc, they can only take 2 quantitative units)
+X = pd.get_dummies(ratings_df[['age_group']])
+y = ratings_df['beauty']
+## add an intercept (beta_0) to our model
+X = sm.add_constant(X) 
+
+model = sm.OLS(y, X).fit()
+predictions = model.predict(X)
+
+# Print out the statistics
+model.summary() # same results and conclusion as OPTION 1
+
+
+# Regression with correlation: 
+# Question: Is teaching evaluation score correlated with beauty score?
+# No hypothesis, straight onto the statistics
+------
+## X is the input variables (or independent variables)
+X = ratings_df['beauty']
+## y is the target/dependent variable
+y = ratings_df['eval']
+## add an intercept (beta_0) to our model
+X = sm.add_constant(X) 
+
+model = sm.OLS(y, X).fit()
+predictions = model.predict(X)
+
+# Print out the statistics
+model.summary()
+-------
+# Conclusion: p<0.05, so evidence of correlation between beauty and eval scores
+
+
+# Practice Questions:
+
+# 1) Does tenure affect beauty scores?
+X = pd.get_dummies(ratings_df[['tenured_prof']]) # using dummy variable because OLS lib doesn't recognise texts
+y = ratings_df['beauty']
+X = sm.add_constant(X)
+model = sm.OLS(y, X).fit()
+predictions = model.predict(X)
+
+model.summary()
+
+# 2) Does being an English speaker affect 
+X = ratings_df['English_speaker']
+y = ratings_df['allstudents']
+# adding an intercept (beta_0) to our model
+X = sm.add_constant(X) 
+
+model = sm.OLS(y, X).fit()
+predictions = model.predict(X)
+
+model.summary()
+
+# 3) what is the correlation between no. of students who participated in the eval survey and eval scores?
+
+X = ratings_df['students']
+y = ratings_df['eval']
+X = sm.add_constant(X) 
+
+model = sm.OLS(y, X).fit()
+predictions = model.predict(X)
+
+model.summary()
+# HERE, FOCUS ON R-SQUARE, NOT P>t or T, IF YOU TAKE SQUARE ROOT OF R YOU GET HOW STRONG THE CORRELATION IS (v. weak)
