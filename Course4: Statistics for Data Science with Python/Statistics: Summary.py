@@ -54,4 +54,12 @@
 
 # Regression in place of ANOVA:
 # 1) does beauty score for instructors differ by age?
-# 2) ANOVA requires to cetegorise age into age ranges and find mean and std for each, but regression can be continous
+# 2) ANOVA requires to cetegorise age into age ranges, then use OLS function to test:
+ratings_df.loc[(ratings_df['age'] <= 40), 'age_group'] = '40 years and younger'
+ratings_df.loc[(ratings_df['age'] > 40)&(ratings_df['age'] < 57), 'age_group'] = 'between 40 and 57 years'
+ratings_df.loc[(ratings_df['age'] >= 57), 'age_group'] = '57 years and older'
+
+from statsmodels.formula.api import ols
+lm = ols('beauty ~ age_group', data = ratings_df).fit()
+table= sm.stats.anova_lm(lm)
+print(table)
