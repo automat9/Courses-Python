@@ -46,6 +46,7 @@
 # 1) we need a question: e.g. does x decrease with y, do x people get paid more than y people, association between x and y?
 # 2) identify dependent (one that we're interested in) and explanatory (those that influence the dependent) variables
 # 3) x = explanatory, y = dependent
+# 4) correlation coefficient is r-squared value, but square rooted
 
 # Regression in place of a t-test:
 # 1) is there a statistically significant difference in teaching evaluation scores for men and women?
