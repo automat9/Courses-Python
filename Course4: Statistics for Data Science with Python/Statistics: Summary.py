@@ -52,6 +52,9 @@
 # 1) is there a statistically significant difference in teaching evaluation scores for men and women?
 # 2) create a list for independent variable (female) and dependent variable (score)
 # 3) run model and interpret results, looking at t value and P>¦t¦, if less than 0.05 then reject null
+# 4) say you want to find out if there's diff. in no. of students enrolled with professors who are visible minority
+# 4a) where vismin = 1 and not visible minority = 0, the coefficient for vismin after test is -21, that means:
+# 4b) they get on avg. 21 students less than profs who aren't visible minority
 
 # Regression in place of ANOVA:
 # 1) does beauty score for instructors differ by age?
