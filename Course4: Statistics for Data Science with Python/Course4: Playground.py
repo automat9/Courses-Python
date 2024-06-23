@@ -627,4 +627,3 @@ predictions = model.predict(X)
 model.summary()
 # HERE, FOCUS ON R-SQUARE, NOT P>t or T, IF YOU TAKE SQUARE ROOT OF R YOU GET HOW STRONG THE CORRELATION IS (v. weak)
 
-do dokonczenia 13min
