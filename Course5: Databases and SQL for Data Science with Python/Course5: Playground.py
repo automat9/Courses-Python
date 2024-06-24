@@ -8,3 +8,22 @@ SELECT COLUMN1, COLUMN2, ... FROM TABLE_1 ; # General syntax
 SELECT * FROM TABLE_1 ; # To retreive all columns
 SELECT <COLUMNS> FROM TABLE_1 WHERE <predicate> ; # To filter data based on a predicate
 # e.g. to select first 5 rows: SELECT * FROM TABLE_1 WHERE ID <= 5 ;
+# another e.g.: select * from FilmLocations where Locations = 'City Hall'
+
+# Count:
+# Retreives number of rows that matches the query criteria (NOT ROW CONTENT, JUST HOW MANY ROWS MATCH THE CRITERIA)
+select COUNT(COUNTRY) from MEDALS where COUNTRY = 'CANADA' 
+
+# Distinct:
+# Removes duplicate values from a result set
+select DISTINCT COUNTRY from MEDALS where MEDALTYPE = 'GOLD' # In case some countries receive multiple gold medals
+
+# Limit:
+# Restricts the number of rows retreived from the database
+select * from tablename LIMIT 10
+select * from MEDALS where YEAR = 2018 LIMIT 5 # shows 5 rows in the MEDALS table for a particular year
+
+# Insert:
+# Add new rows to a table
+insert into tablename (Name, Surname, Age) values ('Mateusz', 'Pawlaczyk', 20) # IMPORTANT no. of columns must = to no. of values
+# we can also add multiple rows to our Name, Surname, Age columns, just do another bracket () under the one above
