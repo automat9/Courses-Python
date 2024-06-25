@@ -39,4 +39,13 @@ UPDATE tablename SET Columnname = Value WHERE condition # if you don't specify w
 DELETE FROM Author WHERE Author_ID IN ('A2','A3') # if you don't specify where, all rows will be removed (careful buddy)
 
 #============================================ Module 2 =======================================================================
-20min
+# Data Definition Language (DDL) Statements
+# Used to define, change, or drop data - tables
+# E.g. CREATE, ALTER, TRUNCATE, DROP
+
+
+# Data Manipulation Language (DML) Statements
+# Used to read and modify data - rows
+# E.g. INSERT, SELECT, UPDATE, DELETE - row (like in module 1)
+
+11min
