@@ -1,3 +1,4 @@
+#============================================ Module 1 =======================================================================
 # SQL is a language used for relational databases to get data out of a database
 # What data? Facts (words, numbers), Pictures, Assets
 # What is a database? Repository of data, provides functionality for adding, modyfing and querying that data
@@ -27,3 +28,15 @@ select * from MEDALS where YEAR = 2018 LIMIT 5 # shows 5 rows in the MEDALS tabl
 # Add new rows to a table
 insert into tablename (Name, Surname, Age) values ('Mateusz', 'Pawlaczyk', 20) # IMPORTANT no. of columns must = to no. of values
 # we can also add multiple rows to our Name, Surname, Age columns, just do another bracket () under the one above
+
+# Update:
+# Welp it updates a row
+UPDATE tablename SET Columnname = Value WHERE condition # if you don't specify where, all the rows will be updated
+# UPDATE Author SET Lastname='KATTA', FIRSTNAME='Lakshmi' WHERE Author_ID='A2'
+
+# Delete
+# deletes rows
+DELETE FROM Author WHERE Author_ID IN ('A2','A3') # if you don't specify where, all rows will be removed (careful buddy)
+
+#============================================ Module 2 =======================================================================
+20min
