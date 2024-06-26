@@ -48,4 +48,35 @@ DELETE FROM Author WHERE Author_ID IN ('A2','A3') # if you don't specify where, 
 # Used to read and modify data - rows
 # E.g. INSERT, SELECT, UPDATE, DELETE - row (like in module 1)
 
-11min
+# Create:
+# Syntax: 
+CREATE TABLE table_name
+    (
+      column_name_1 datatype optional_parameters,
+      column_name_2 datatype,
+      column_name_n datatype
+    )
+# datatypes include: CHAR(2) - string of fixed length 2 AND VARCAHAR(14) - variable length, up to 14 chatacters long
+# optional parametrs include: PRIMARY KEY (prevents dulicates in the table), NOT NULL
+
+# Alter:
+# Add/remove columns, keys, constraints, or modify datatype
+# Syntax:
+ALTER TABLE <your_table_name>
+ ADD COLUMN <column_name_n> datatype
+ MODIFY <column_name_n> <data_type>
+ 
+
+# Drop (delete)
+DROP TABLE <table name>;
+DROP COLUMN <column_name_n>
+
+# Truncate (delete data in table without deleting table itself)
+TRUNCATE TABLE <table_name>
+  IMMEDIATE # specifies to process statement immediately, cannot be undone)
+
+# SCENARIO:
+# create a table with CREATE
+# ALTER - create a new column
+# UPDATE - add values e.g. update petsale set quantity = 24 where ID = 1
+# after each modification, use select * from petsale to SEE THE TABLE (otherwise won't show up)
