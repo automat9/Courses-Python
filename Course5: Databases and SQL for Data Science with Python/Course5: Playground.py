@@ -86,5 +86,19 @@ TRUNCATE TABLE <table_name>
 # after each modification, use select * from petsale to SEE THE TABLE (otherwise won't show up)
 
 #============================================ Module 3 =======================================================================
-30min
+# Retreiving rows when predicate unknown e.g. can't use ID because don't remember the specific number
+SELECT firstname FROM Author WHERE firstname like 'R%' # finds all names that start with the letter R
+SELECT title FROM Book WHERE pages >=290 AND pages<=300 # finds all books whose number of pages is between 290 and 300
+SELECT title FROM Book WHERE pages BETWEEN 290 AND pages 300 # alternative version
+# Now, what do we do when we can't select range, e.g. when we want to know which country the authors are from?
+SELECT firstname, lastname, country FROM Author WHERE country="Australia" OR "country"=BR # this is if we know which country we're interested in
+SELECT firstname, lastname, country FROM Author WHERE country IN('AU','BR','CH','PL') # this is if you want to use maaaany countries (less typing)
+
+# Sorting Result Sets (e.g. alphabetically)
+SELECT * FROM Book # this will show you the whole dataset, but what if you want to select titles only?
+SELECT title FROM book # ok, but now the list isn't sorted in any order as we don't have IDs, let's sort alphabetically
+SELECT title FROM book ORDER BY title
+SELECT title FROM book ORDER BY title DESC # descending order, now it's from Z to A 
+SELECT title FROM book ORDER BY 2 # if you want to sort by indicating column sequence number, in this case we're talking about second column (pages)
+
 
