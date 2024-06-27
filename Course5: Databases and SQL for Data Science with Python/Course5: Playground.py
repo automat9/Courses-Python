@@ -2,7 +2,7 @@
 # SQL is a language used for relational databases to get data out of a database
 # What data? Facts (words, numbers), Pictures, Assets
 # What is a database? Repository of data, provides functionality for adding, modyfing and querying that data
-# Basic SQL commands: Create a table, insert, select and update
+# Basic SQL commands: CREATE, SELECT, INSERT, UPDATE, DELETE
 
 # Select: 
 SELECT COLUMN1, COLUMN2, ... FROM TABLE_1 ; # General syntax
@@ -63,9 +63,10 @@ CREATE TABLE table_name
 # Add/remove columns, keys, constraints, or modify datatype
 # Syntax:
 ALTER TABLE <your_table_name>
- ADD COLUMN <column_name_n> datatype
- MODIFY <column_name_n> <data_type>
- 
+ADD COLUMN <column_name_n> datatype
+MODIFY <column_name_n> <data_type>
+ # To change the data type of an existing column to varchar data type write:
+ALTER TABLE table_name ALTER COLUMN column_name SET DATA TYPE VARCHAR(20);
 
 # Drop (delete)
 DROP TABLE <table name>;
@@ -80,3 +81,4 @@ TRUNCATE TABLE <table_name>
 # ALTER - create a new column
 # UPDATE - add values e.g. update petsale set quantity = 24 where ID = 1
 # after each modification, use select * from petsale to SEE THE TABLE (otherwise won't show up)
+
