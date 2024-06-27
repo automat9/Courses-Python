@@ -85,3 +85,6 @@ TRUNCATE TABLE <table_name>
 # UPDATE - add values e.g. update petsale set quantity = 24 where ID = 1
 # after each modification, use select * from petsale to SEE THE TABLE (otherwise won't show up)
 
+#============================================ Module 3 =======================================================================
+30min
+
