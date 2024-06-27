@@ -62,11 +62,14 @@ CREATE TABLE table_name
 # Alter:
 # Add/remove columns, keys, constraints, or modify datatype
 # Syntax:
-ALTER TABLE <your_table_name>
+ALTER TABLE <your_table_name> # and then, same line either:
 ADD COLUMN <column_name_n> datatype
 MODIFY <column_name_n> <data_type>
  # To change the data type of an existing column to varchar data type write:
 ALTER TABLE table_name ALTER COLUMN column_name SET DATA TYPE VARCHAR(20);
+#  To add a column ‘ID’ that contains 7 character alpha-numeric values to our database
+ALTER TABLE Employees ADD ID char(7)
+
 
 # Drop (delete)
 DROP TABLE <table name>;
