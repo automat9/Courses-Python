@@ -110,7 +110,7 @@ SELECT country, count(country) as Count FROM Author GROUP BY country # sa,e as a
 # wanna see countries where the number of authors is greater than say 4?
 SELECT country, count(country) as Count FROM Author GROUP BY country HAVING COUNT(country)>4 # having is a condition for group by clause
 
-# SOME EXAMPLES OF GROUPING
+# SOME EXAMPLES OF GROUPING/SORTING
 # basics
 SELECT F_NAME, L_NAME FROM EMPLOYEES WHERE ADDRESS LIKE '%Elgin,IL%'; # to find names and surnames who live in Elgin
 ...WHERE B_DATE LIKE '197%'; # those who were born in the 70's
@@ -118,6 +118,8 @@ SELECT F_NAME, L_NAME FROM EMPLOYEES WHERE ADDRESS LIKE '%Elgin,IL%'; # to find 
 # second example, extra values can only appear after 7 (1970-1979) not before 1
 # actual grouping
 SELECT DEP_ID, COUNT(*) FROM EMPLOYEES GROUP BY DEP_ID; # Grouping - for each department ID, we want to find the number of employees in department
+SELECT DEP_ID, AVG(SALARY) FROM EMPLOYEES GROUP BY DEP_ID HAVING AVG(SALARY) >=60000; # group by dep_id and filter the ones that have avg. salary of >= 60,000
+ORDER BY AVG(SALARY) DESC # ADD THIS TO THE ONE ABOVE TO SORT BY DESCENDING ORDER :)
 
-# SOME EXAMPLES OF SORTING
+# EXAMPLE OF SORTING
 SELECT F_NAME, L_NAME, DEP_ID FROM EMPLOYEES ORDER BY DEP_ID;
