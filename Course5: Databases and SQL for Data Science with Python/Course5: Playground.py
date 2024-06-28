@@ -101,4 +101,11 @@ SELECT title FROM book ORDER BY title
 SELECT title FROM book ORDER BY title DESC # descending order, now it's from Z to A 
 SELECT title FROM book ORDER BY 2 # if you want to sort by indicating column sequence number, in this case we're talking about second column (pages)
 
-
+# Grouping Result Sets
+# E.g. eliminating duplicates and further restricting values
+SELECT country FROM Author ORDER BY 1 # full list of countries where authors come from (alphabetically), there are duplicates
+SELECT DISTINCT(country) FROM Author # no duplicates :D, but we don't know how many authors come from each country :<, so:
+SELECT country, count(country) FROM Author GROUP BY country # wheeeyyyy, ok but now we have a new column that's called '2' yuck
+SELECT country, count(country) as Count FROM Author GROUP BY country # sa,e as above but count column is actually called count
+# wanna see countries where the number of authors is greater than say 4?
+SELECT country, count(country) as Count FROM Author GROUP BY country HAVING COUNT(country)>4 # having is a condition for group by clause
