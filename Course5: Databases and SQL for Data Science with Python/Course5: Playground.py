@@ -97,7 +97,7 @@ SELECT firstname, lastname, country FROM Author WHERE country IN('AU','BR','CH',
 # Sorting Result Sets (e.g. alphabetically)
 SELECT * FROM Book # this will show you the whole dataset, but what if you want to select titles only?
 SELECT title FROM book # ok, but now the list isn't sorted in any order as we don't have IDs, let's sort alphabetically
-SELECT title FROM book ORDER BY title
+SELECT title FROM book ORDER BY title # ascending order
 SELECT title FROM book ORDER BY title DESC # descending order, now it's from Z to A 
 SELECT title FROM book ORDER BY 2 # if you want to sort by indicating column sequence number, in this case we're talking about second column (pages)
 
