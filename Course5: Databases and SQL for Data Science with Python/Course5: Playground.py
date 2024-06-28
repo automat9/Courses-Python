@@ -123,3 +123,17 @@ ORDER BY AVG(SALARY) DESC # ADD THIS TO THE ONE ABOVE TO SORT BY DESCENDING ORDE
 
 # EXAMPLE OF SORTING
 SELECT F_NAME, L_NAME, DEP_ID FROM EMPLOYEES ORDER BY DEP_ID;
+
+# Practice Quiz answers
+SELECT * FROM Employees ORDER BY Lastname # if you want to retreive a list of employees in alphabetial order of Lastname 
+HAVING # Used in order to set a filtering condition when using GROUP BY clause
+SELECT * FROM Author WHERE Country IN ('A','B','C') # you want to retreive a list of authors from 3 countries
+SELECT Title, Price FROM Book WHERE Price >= 10 and Price <= 25; # TWO WAYS TO RETREIVE LIST OF BOOKS PRICES IN RANGE $10-$25
+SELECT Title, Price FROM Book WHERE Price BETWEEN 10 and 25; # TWO WAYS TO RETREIVE LIST OF BOOKS PRICES IN RANGE $10-$25
+
+
+
+
+
+
+
