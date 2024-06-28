@@ -87,7 +87,7 @@ TRUNCATE TABLE <table_name>
 
 #============================================ Module 3 =======================================================================
 # Retreiving rows when predicate unknown e.g. can't use ID because don't remember the specific number
-SELECT firstname FROM Author WHERE firstname like 'R%' # finds all names that start with the letter R
+SELECT firstname FROM Author WHERE firstname like 'R%' # finds all names that start with the letter R (% can be in front of R, after R or BEFORE AND AFTER - [THERE ARE RULES - see SOME EXAMPLES OF GROUPING/SORTING], but MUST BE within quotation marks)
 SELECT title FROM Book WHERE pages >=290 AND pages<=300 # finds all books whose number of pages is between 290 and 300
 SELECT title FROM Book WHERE pages BETWEEN 290 AND pages 300 # alternative version
 # Now, what do we do when we can't select range, e.g. when we want to know which country the authors are from?
@@ -109,3 +109,15 @@ SELECT country, count(country) FROM Author GROUP BY country # wheeeyyyy, ok but 
 SELECT country, count(country) as Count FROM Author GROUP BY country # sa,e as above but count column is actually called count
 # wanna see countries where the number of authors is greater than say 4?
 SELECT country, count(country) as Count FROM Author GROUP BY country HAVING COUNT(country)>4 # having is a condition for group by clause
+
+# SOME EXAMPLES OF GROUPING
+# basics
+SELECT F_NAME, L_NAME FROM EMPLOYEES WHERE ADDRESS LIKE '%Elgin,IL%'; # to find names and surnames who live in Elgin
+...WHERE B_DATE LIKE '197%'; # those who were born in the 70's
+# first example & before and after - indicates that address string can have more character, both before and after required text - results appear as Elgin, IL, X Street or Y Street, Elgin, IL, if % before Elgin, then only Elgin, IL, X Street would show up
+# second example, extra values can only appear after 7 (1970-1979) not before 1
+# actual grouping
+SELECT DEP_ID, COUNT(*) FROM EMPLOYEES GROUP BY DEP_ID; # Grouping - for each department ID, we want to find the number of employees in department
+
+# SOME EXAMPLES OF SORTING
+SELECT F_NAME, L_NAME, DEP_ID FROM EMPLOYEES ORDER BY DEP_ID;
