@@ -131,7 +131,7 @@ SELECT * FROM Author WHERE Country IN ('A','B','C') # you want to retreive a lis
 SELECT Title, Price FROM Book WHERE Price >= 10 and Price <= 25; # TWO WAYS TO RETREIVE LIST OF BOOKS PRICES IN RANGE $10-$25
 SELECT Title, Price FROM Book WHERE Price BETWEEN 10 and 25; # TWO WAYS TO RETREIVE LIST OF BOOKS PRICES IN RANGE $10-$25
 
-
+start here
 
 
 
