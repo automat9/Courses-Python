@@ -86,6 +86,7 @@ TRUNCATE TABLE <table_name>
 # after each modification, use select * from petsale to SEE THE TABLE (otherwise won't show up)
 
 #============================================ Module 3 =======================================================================
+# ===== REFINING YOUR RESULTS
 # Retreiving rows when predicate unknown e.g. can't use ID because don't remember the specific number
 SELECT firstname FROM Author WHERE firstname like 'R%' # finds all names that start with the letter R (% can be in front of R, after R or BEFORE AND AFTER - [THERE ARE RULES - see SOME EXAMPLES OF GROUPING/SORTING], but MUST BE within quotation marks)
 SELECT title FROM Book WHERE pages >=290 AND pages<=300 # finds all books whose number of pages is between 290 and 300
@@ -131,9 +132,31 @@ SELECT * FROM Author WHERE Country IN ('A','B','C') # you want to retreive a lis
 SELECT Title, Price FROM Book WHERE Price >= 10 and Price <= 25; # TWO WAYS TO RETREIVE LIST OF BOOKS PRICES IN RANGE $10-$25
 SELECT Title, Price FROM Book WHERE Price BETWEEN 10 and 25; # TWO WAYS TO RETREIVE LIST OF BOOKS PRICES IN RANGE $10-$25
 
-start here
+# ===== FUNCTIONS, MULTIPLE TABLES AND SUB-QUERIES
+
+# Aggregate or column functions
+# 1) takes a collection of like values (e.g. takes all the values in a column as input and returns a single value or null)
+# 2) SUM(), MIN(), MAX(), AVG()
+
+SELECT SUM(column_name) FROM table_name # gives back a small column with a given number, if you want that column to have an actual name do:
+SELECT SUM(column_name) as column_name FROM table_name 
+
+# Similarly:
+SELECT MIN/MAX()
+
+# Get min value of ID column for dogs:
+SELECT MIN(ID) FROM Pets WHERE Animal = 'Dog'
+
+# Calculate avg. cost per dog:
+SELECT AVG(COST / QUANTITY) FROM Pets WHERE Animal = 'Dog'
 
 
+# Scalar functions
+# 1) perform operations on every input value:
+# 2) ROUND(), lENGTH(), UCASE, LCASE
 
-
-
+# Date and Time functions
+# SQL contains DATE, TIME, TIMESTAMP types:
+# DATE = 8 digits = YYYYMMDD
+# Time has 6 = HHMMSS
+# TIMESTAMP has 20 = YYYYXXDDHHMMSSZZZZZ where XX = month and ZZZZZ = microseconds
