@@ -153,10 +153,28 @@ SELECT AVG(COST / QUANTITY) FROM Pets WHERE Animal = 'Dog'
 
 # Scalar functions
 # 1) perform operations on every input value:
-# 2) ROUND(), lENGTH(), UCASE, LCASE
+# 2) ROUND(), LENGTH(), UCASE, LCASE
+SELECT ROUND(column_name, decimal_places) FROM table_name
+SELECT ROUND(Cost, 2) FROM Pets
 
+SELECT UCASE(ANIMAL) FROM PETRESCUE # prints out all animal names in upper case
 # Date and Time functions
 # SQL contains DATE, TIME, TIMESTAMP types:
 # DATE = 8 digits = YYYYMMDD
 # Time has 6 = HHMMSS
 # TIMESTAMP has 20 = YYYYXXDDHHMMSSZZZZZ where XX = month and ZZZZZ = microseconds
+
+# To select a year from a given RescueDate column:
+SELECT YEAR(RESCUEDATE) FROM PETRESCUE;
+
+# To add 1 year to all dates in the rescuedate column:
+SELECT DATE_ADD(RESCUEDATE, INTERVAL 1 YEAR) FROM PETRESCUE # to do days/months, keep everything the same, just change 1 year to idk 3 DAY 4 month
+
+# Similarly
+SELECT DATE_SUB(RESCUEDATE, INTERVAL 3 DAY) FROM PETRESCUE
+
+# Difference between today and the dates in the table (in days)
+SELECT DATEDIFF(CURRENT_DATE, RESCUEDATE) FROM PETRESCUE
+
+# How much time has passed since each date in the column relative to current date)
+SELECT FROM_DAYS(DATEDIFF(CURRENT_DATE, RESCUEDATE)) FROM PETRESCUE
