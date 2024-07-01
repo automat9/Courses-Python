@@ -59,6 +59,47 @@ CREATE TABLE table_name
 # datatypes include: CHAR(2) - string of fixed length 2 AND VARCAHAR(14) - variable length, up to 14 chatacters long
 # optional parametrs include: PRIMARY KEY (prevents dulicates in the table), NOT NULL
 
+# Better example:
+CREATE TABLE EMPLOYEES (
+                            EMP_ID CHAR(9) NOT NULL, 
+                            F_NAME VARCHAR(15) NOT NULL,
+                            L_NAME VARCHAR(15) NOT NULL,
+                            SSN CHAR(9),
+                            B_DATE DATE,
+                            SEX CHAR,
+                            ADDRESS VARCHAR(30),
+                            JOB_ID CHAR(9),
+                            SALARY DECIMAL(10,2),
+                            MANAGER_ID CHAR(9),
+                            DEP_ID CHAR(9) NOT NULL,
+                            PRIMARY KEY (EMP_ID));
+                            
+  CREATE TABLE JOB_HISTORY (
+                            EMPL_ID CHAR(9) NOT NULL, 
+                            START_DATE DATE,
+                            JOBS_ID CHAR(9) NOT NULL,
+                            DEPT_ID CHAR(9),
+                            PRIMARY KEY (EMPL_ID,JOBS_ID));
+ 
+ CREATE TABLE JOBS (
+                            JOB_IDENT CHAR(9) NOT NULL, 
+                            JOB_TITLE VARCHAR(30),
+                            MIN_SALARY DECIMAL(10,2),
+                            MAX_SALARY DECIMAL(10,2),
+                            PRIMARY KEY (JOB_IDENT));
+
+CREATE TABLE DEPARTMENTS (
+                            DEPT_ID_DEP CHAR(9) NOT NULL, 
+                            DEP_NAME VARCHAR(15) ,
+                            MANAGER_ID CHAR(9),
+                            LOC_ID CHAR(9),
+                            PRIMARY KEY (DEPT_ID_DEP));
+
+CREATE TABLE LOCATIONS (
+                            LOCT_ID CHAR(9) NOT NULL,
+                            DEP_ID_LOC CHAR(9) NOT NULL,
+                            PRIMARY KEY (LOCT_ID,DEP_ID_LOC));
+
 # Alter:
 # Add/remove columns, keys, constraints, or modify datatype
 # Syntax:
@@ -178,3 +219,33 @@ SELECT DATEDIFF(CURRENT_DATE, RESCUEDATE) FROM PETRESCUE
 
 # How much time has passed since each date in the column relative to current date)
 SELECT FROM_DAYS(DATEDIFF(CURRENT_DATE, RESCUEDATE)) FROM PETRESCUE
+
+# ===== Sub-queries and nested selects
+# Query inside another query
+# e.g.:
+SELECT column1 FROM table WHERE column2 = (SELECT MAX(column2) FROM TABLE)
+
+# Why use them? Say you want to select all employees where salary > avg(salary)
+SELECT * FROM EMPLOYEES WHERE SALARY < AVG(SALARY)
+# oh noes D: le *bigge erroré*, but wait! I know what to do:
+SELECT * FROM EMPLOYEES WHERE SALARY < (SELECT AVG(SALARY) FROM EMPLOYEES);
+# sub-query works :DD
+
+# Another example: (first and last names of the oldest employee - smallest date of birth) 
+SELECT F_NAME, L_NAME FROM EMPLOYEES WHERE B_DATE = (SELECT MIN(B_DATE) FROM EMPLOYEES);
+
+# Yet another one: (creating derived table - can be used to query specific info)
+# Say you want to know avg salary of top 5 earners in company, you first extract a table of top 5 salaries as a table
+# then, from that table you can query the avg vale of salary:
+SELECT AVG(SALARY) 
+FROM (SELECT SALARY 
+      FROM EMPLOYEES 
+      ORDER BY SALARY DESC 
+      LIMIT 5) AS SALARY_TABLE;
+# Note that it is necessary to give an alias to any derived tables.
+
+# ===== WORKING WITH MULTIPLE TABLES
+# Ways to access multiple tables in the same query:
+# 1) sub-queries
+# 2) implicit JOIN
+# 3) JOIN operators (INNER JOIN, OUTER JOIN, and so on)
