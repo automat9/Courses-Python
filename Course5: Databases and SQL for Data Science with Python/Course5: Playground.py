@@ -234,6 +234,13 @@ SELECT * FROM EMPLOYEES WHERE SALARY < (SELECT AVG(SALARY) FROM EMPLOYEES);
 # Another example: (first and last names of the oldest employee - smallest date of birth) 
 SELECT F_NAME, L_NAME FROM EMPLOYEES WHERE B_DATE = (SELECT MIN(B_DATE) FROM EMPLOYEES);
 
+# Another one: retreive job information for employees earning >$70,000.
+# Retreive details from JOBS table, which has common IDs with those available in EMPLOYEES table, provided the salary
+# in the EMPLOYEES table is greater than 70k, do:
+SELECT JOB_TITLE, MIN_SALARY, MAX_SALARY, JOB_IDENT
+FROM JOBS
+WHERE JOB_IDENT IN (select JOB_ID from EMPLOYEES where SALARY > 70000 );
+
 # Yet another one: (creating derived table - can be used to query specific info)
 # Say you want to know avg salary of top 5 earners in company, you first extract a table of top 5 salaries as a table
 # then, from that table you can query the avg vale of salary:
@@ -249,3 +256,30 @@ FROM (SELECT SALARY
 # 1) sub-queries
 # 2) implicit JOIN
 # 3) JOIN operators (INNER JOIN, OUTER JOIN, and so on)
+
+# e.g. Retreive JOB information and a list of employees whose b_year is after 1976:
+# sub-query:
+SELECT JOB_TITLE, MIN_SALARY, MAX_SALARY, JOB_IDENT
+FROM JOBS
+WHERE JOB_IDENT IN (SELECT JOB_ID
+                    FROM EMPLOYEES
+                    WHERE YEAR(B_DATE)>1976 );
+# implicit join
+SELECT J.JOB_TITLE, J.MIN_SALARY, J.MAX_SALARY, J.JOB_IDENT
+FROM JOBS J, EMPLOYEES E
+WHERE E.JOB_ID = J.JOB_IDENT AND YEAR(E.B_DATE)>1976;
+
+# e.g. Retrieve only the list of employees whose JOB_TITLE is Jr. Designer
+# Sub-query:
+SELECT *
+FROM EMPLOYEES
+WHERE JOB_ID IN (SELECT JOB_IDENT
+                 FROM JOBS
+                 WHERE JOB_TITLE= 'Jr. Designer');
+# Implicit joins:
+SELECT *
+FROM EMPLOYEES E, JOBS J # 
+WHERE E.JOB_ID = J.JOB_IDENT AND J.JOB_TITLE= 'Jr. Designer';
+
+# notice how we're assigning aliases in joins, helpful in cases where specific columns are to be accessed from different tables
+# also notice how both sub-queries and joins give the same results :)
