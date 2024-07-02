@@ -283,3 +283,74 @@ WHERE E.JOB_ID = J.JOB_IDENT AND J.JOB_TITLE= 'Jr. Designer';
 
 # notice how we're assigning aliases in joins, helpful in cases where specific columns are to be accessed from different tables
 # also notice how both sub-queries and joins give the same results :)
+
+#============================================ Module 4 =======================================================================
+# Creating & Accessing SQLite database using Python
+
+# 1) Create database using SQLite
+#Install & load sqlite3
+#!pip install sqlite3 # uncomment if already installed
+import sqlite3
+
+# Connecting to sqlite
+# connection object
+conn = sqlite3.connect('INSTRUCTOR.db')
+
+# cursor object
+cursor_obj = conn.cursor() # cursor class is an instance using which you can invoke methods thay execute SQLite statements, fetch data from the result sets of the queries
+
+# 2) Create a table in the database:
+table = """ create table IF NOT EXISTS INSTRUCTOR(ID INTEGER PRIMARY KEY NOT NULL, FNAME VARCHAR(20), LNAME VARCHAR(20), CITY VARCHAR(20), CCODE CHAR(2));"""
+cursor_obj.execute(table)
+
+# 3) Insert data into the table
+cursor_obj.execute('''insert into INSTRUCTOR values (1, 'Rav', 'Ahuja', 'TORONTO', 'CA')''')
+
+# 4) Query data in the table
+statement = '''SELECT * FROM INSTRUCTOR'''
+cursor_obj.execute(statement)
+
+print("All the data")
+output_all = cursor_obj.fetchall()
+for row_all in output_all:
+  print(row_all)
+    
+# If you want to fetch few rows from the table we use fetchmany(numberofrows) and mention the number how many rows you want to fetch
+output_many = cursor_obj.fetchmany(2) # fetchmany instead of fetchall
+for row_many in output_many:
+  print(row_many)
+
+# Fetch only FNAME from the table
+statement = '''SELECT FNAME FROM INSTRUCTOR'''
+cursor_obj.execute(statement)
+
+print("All the data")
+output_column = cursor_obj.fetchall()
+for fetch in output_column:
+  print(fetch)
+
+# Change Rav's city to Moosetown
+query_update='''update INSTRUCTOR set CITY='MOOSETOWN' where FNAME="Rav"'''
+cursor_obj.execute(query_update)
+
+statement = '''SELECT * FROM INSTRUCTOR'''
+cursor_obj.execute(statement)
+
+print("All the data")
+output1 = cursor_obj.fetchmany(1)
+for row in output1:
+  print(row)
+
+# Retrive data into Pandas
+import pandas as pd
+#retrieve the query results into a pandas dataframe
+df = pd.read_sql_query("select * from instructor;", conn)
+
+df # print the dataframe
+
+df.LNAME[0] # print just the LNAME for first row in the pandas data frame
+
+df.shape # see how many rows and columns there are in the dataset
+
+# Close the connection
+conn.close() # VERY IMPORTANT, NEED TO AVOID UNUSED CONNECTIONS TAKING UP RESOURCES
