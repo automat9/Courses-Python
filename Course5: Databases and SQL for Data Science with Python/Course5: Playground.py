@@ -376,3 +376,5 @@ conn.close() # VERY IMPORTANT, NEED TO AVOID UNUSED CONNECTIONS TAKING UP RESOUR
 <statement>
 <statement>
 <statement> # time for executing the multiple
+
+    3minuta odcinku accessing database with sql magic
