@@ -354,3 +354,25 @@ df.shape # see how many rows and columns there are in the dataset
 
 # Close the connection
 conn.close() # VERY IMPORTANT, NEED TO AVOID UNUSED CONNECTIONS TAKING UP RESOURCES
+
+# ===== SQL MAGIC
+# Magic statements - special commands with special functionalities, not valid for Python but affect the behaviour of the notebook
+# 2 types: Line Magic and Cell Magic
+# Line Magic: Commands prefixed with a single % and operate on a single line of input
+# Cell Magic: 2 %% and operate on multiple lines of input
+# examples:
+%pwd # prints the current working directory
+%ls # lists all files in the current directory
+%history # shows command history
+%reset # resets the namespace by removing all names defined by the user
+%who # lists all variables in the namespace
+%whos # provides more details about all variables in the namespace
+%matplotlib inline # makes matplotlib appear within the notebook
+%timeit # times the execution of a single statement
+%ismagic # list of all available line magics
+
+%timeit <statement> # time for executing single statement
+%%timeit
+<statement>
+<statement>
+<statement> # time for executing the multiple
