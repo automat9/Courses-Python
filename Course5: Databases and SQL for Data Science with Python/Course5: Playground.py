@@ -359,6 +359,9 @@ conn.close() # VERY IMPORTANT, NEED TO AVOID UNUSED CONNECTIONS TAKING UP RESOUR
 # Magic statements - special commands with special functionalities, not valid for Python but affect the behaviour of the notebook
 # 2 types: Line Magic and Cell Magic
 # Line Magic: Commands prefixed with a single % and operate on a single line of input
+# In order to use SQL Magic, we need install some dependencies: 
+# iPython-sql = !pip install --user ipython-sql
+# Enable SQL Magic in Jupyter = %load_ext sql
 # Cell Magic: 2 %% and operate on multiple lines of input
 # examples:
 %pwd # prints the current working directory
@@ -377,4 +380,13 @@ conn.close() # VERY IMPORTANT, NEED TO AVOID UNUSED CONNECTIONS TAKING UP RESOUR
 <statement>
 <statement> # time for executing the multiple
 
-    3minuta odcinku accessing database with sql magic
+# Mahic statement can also be run in other languages:
+%%HTML # write HTML code in cells to render it
+
+%%HTML
+<h>Hello world</h1> # example
+
+%%javascript # same but writes java script code
+
+%%bash cell # bash commands, in command terminal
+
