@@ -362,6 +362,7 @@ conn.close() # VERY IMPORTANT, NEED TO AVOID UNUSED CONNECTIONS TAKING UP RESOUR
 # In order to use SQL Magic, we need install some dependencies: 
 # iPython-sql = !pip install --user ipython-sql
 # Enable SQL Magic in Jupyter = %load_ext sql
+# Syntax for connecting to magic sql using sqlite: %sql sqlite://DatabaseName (where DatabaseName will be your .db file)
 # Cell Magic: 2 %% and operate on multiple lines of input
 # examples:
 %pwd # prints the current working directory
@@ -389,4 +390,25 @@ conn.close() # VERY IMPORTANT, NEED TO AVOID UNUSED CONNECTIONS TAKING UP RESOUR
 %%javascript # same but writes java script code
 
 %%bash cell # bash commands, in command terminal
+
+# ===== Using Python Variables in my SQL statements
+# I can use python variables by adding a : prefix to my python variable names, e.g.:
+country = "Canada"
+%sql select * from INTERNATIONAL_STUDENT_TEST_SCORES where country = :country
+
+# Assigning results of queries to Python variables works normallly:
+test_score_distribution = %sql SELECT test_score as "Test_Score", count(*) as "Frequency" from INTERNATIONAL_STUDENT_TEST_SCORES GROUP BY test_score;
+test_score_distribution
+
+# Converting query results to dataframes (but why? because dataframes are much more versatile, we can use them to create *graphs* :3
+dataframe = test_score_distribution.DataFrame()
+%matplotlib inline
+# uncomment the following line if you get an module error saying seaborn not found
+# !pip install seaborn==0.9.0
+import seaborn
+plot = seaborn.barplot(x='Test_Score',y='Frequency', data=dataframe)
+
+# example sql table: 
+%%sql 
+SELECT country, first_name, last_name, test_score FROM INTERNATIONAL_STUDENT_TEST_SCORES; 
 
