@@ -412,3 +412,44 @@ plot = seaborn.barplot(x='Test_Score',y='Frequency', data=dataframe)
 %%sql 
 SELECT country, first_name, last_name, test_score FROM INTERNATIONAL_STUDENT_TEST_SCORES; 
 
+# ================ Practice
+# (in Jupyter)
+
+# CONNECT TO THE DATABASE
+%load_ext sql
+
+import csv, sqlite3
+con = sqlite3.connect("socioeconomic.db")
+cur = con.cursor()
+!pip install -q pandas==1.1.5
+
+%sql sqlite:///socioeconomic.db # as mentioned before, this is the syntax for connecting to magic sql
+
+# STORE DATASET IN A TABLE
+import pandas
+df = pandas.read_csv('https://data.cityofchicago.org/resource/jcxq-k9xf.csv')
+df.to_sql("chicago_socioeconomic_data", con, if_exists='replace', index=False,method="multi")
+
+# Verify that it works
+%sql SELECT * FROM chicago_socioeconomic_data
+
+# PROBLEM 1) HOW MANY ROWS IN DATASET?
+%sql SELECT COUNT(*) FROM chicago_socioeconomic_data
+
+# PROBLEM 2) HOW MANY COMMUNITY AREAS IN CHICAGO HAVE A HARDSHIP INDEX GREATER THAN 50?
+%sql SELECT COUNT(*) FROM chicago_socioeconomic_data WHERE hardship_index > 50.0;
+
+# PROBLEM 3) MAXIMUM VALUE OF HARDSHIP IN THIS DATA
+%sql SELECT MAX(hardship_index) FROM chicago_socioeconomic_data
+
+# PROBLEM 4) WHICH COMMUNITY AREA HAS THE HIGHEST HARDSHIP INDEX
+%sql SELECT community_area_name FROM chicago_socioeconomic_data WHERE hardship_index = 98.0 # we know it's 98.0 because result to PROBLEM 3
+# or
+%sql SELECT community_area_name FROM chicago_socioeconomic_data ORDER BY hardship_index DESC LIMIT 1;
+# or use sub-query to determine max hardship index
+%sql select community_area_name from chicago_socioeconomic_data
+where hardship_index = ( select max(hardship_index) from chicago_socioeconomic_data );
+
+# PROBLEM 5) WHICH CHICAGO COMMUNITY AREAS HAVE PER-CAPITA INCOMES GREATER THAN 60K?
+
+dokoncz tu
