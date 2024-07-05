@@ -451,5 +451,16 @@ df.to_sql("chicago_socioeconomic_data", con, if_exists='replace', index=False,me
 where hardship_index = ( select max(hardship_index) from chicago_socioeconomic_data );
 
 # PROBLEM 5) WHICH CHICAGO COMMUNITY AREAS HAVE PER-CAPITA INCOMES GREATER THAN 60K?
+%sql SELECT community_area_name FROM chicago_socioeconomic_data WHERE per_capita_income_ > 60000;
 
-dokoncz tu
+# PROBLEM 6) CREATE A SCATTER PLOT USING THE VARIABLES per_capita_income AND hardship_index
+# if the import command gives ModuleNotFoundError: No module named 'seaborn'
+# then uncomment the following line i.e. delete the # to install the seaborn package 
+# !pip install seaborn
+
+import matplotlib.pyplot as plt
+%matplotlib inline
+import seaborn as sns
+
+income_vs_hardship = %sql SELECT per_capita_income_, hardship_index FROM chicago_socioeconomic_data;
+plot = sns.jointplot(x='per_capita_income_',y='hardship_index', data=income_vs_hardship.DataFrame())
