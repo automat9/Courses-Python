@@ -464,3 +464,8 @@ import seaborn as sns
 
 income_vs_hardship = %sql SELECT per_capita_income_, hardship_index FROM chicago_socioeconomic_data;
 plot = sns.jointplot(x='per_capita_income_',y='hardship_index', data=income_vs_hardship.DataFrame())
+
+#============================================ Module 5 =======================================================================
+# Working with Real World Datasets
+
+# CSV files
