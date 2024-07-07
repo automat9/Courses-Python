@@ -562,3 +562,4 @@ LIMIT 5
 
 # Q12: Get the hardship index for the community area which has the highest value for College Enrollment
 # A: N/A as for this solution to work, another table from last week should already exist
+
