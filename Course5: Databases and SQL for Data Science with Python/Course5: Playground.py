@@ -298,6 +298,7 @@ conn = sqlite3.connect('INSTRUCTOR.db')
 
 # cursor object
 cursor_obj = conn.cursor() # cursor class is an instance using which you can invoke methods thay execute SQLite statements, fetch data from the result sets of the queries
+# in other words, a cursor enables traversal over the records in a database
 
 # 2) Create a table in the database:
 table = """ create table IF NOT EXISTS INSTRUCTOR(ID INTEGER PRIMARY KEY NOT NULL, FNAME VARCHAR(20), LNAME VARCHAR(20), CITY VARCHAR(20), CCODE CHAR(2));"""
