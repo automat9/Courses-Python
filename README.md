@@ -1,3 +1,3 @@
 ## Welcome to my first repository
 
-Learning every day!
+I'm still very new to programming, so please don't mind my awful codes :)
